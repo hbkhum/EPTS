@@ -1,2 +1,2 @@
 # EPTS
-System of Data &amp; Instrumentation
+Acquisition data system
