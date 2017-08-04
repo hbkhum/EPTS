@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPTS.UI.Web", "UI\EPTS.UI.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPTS.UI.WPF", "UI\EPTS.UI.WPF\EPTS.UI.WPF.csproj", "{98BFDBF7-778E-4123-844D-B09E7E2A8043}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPTS", "EPTS\EPTS.csproj", "{21844947-CB52-425B-94B1-817669189497}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{98BFDBF7-778E-4123-844D-B09E7E2A8043}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98BFDBF7-778E-4123-844D-B09E7E2A8043}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98BFDBF7-778E-4123-844D-B09E7E2A8043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21844947-CB52-425B-94B1-817669189497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21844947-CB52-425B-94B1-817669189497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21844947-CB52-425B-94B1-817669189497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21844947-CB52-425B-94B1-817669189497}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
