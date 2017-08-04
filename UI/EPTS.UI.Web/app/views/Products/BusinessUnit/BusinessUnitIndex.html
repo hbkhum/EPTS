@@ -1,0 +1,173 @@
+﻿            <!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Business Unit
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Catalogs</a></li>
+        <li class="active">Business Unit</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Main row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h1>
+                        <i class="fa fa-share-alt"></i> Business Unit
+                    </h1>
+                </div>
+                
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <button data-ng-click="BusinessUnitShowAdd()" type="button" class="btn btn-success btn-sm"><span class="fa fa-plus-circle"> </span>Add Business Unit</button>
+                    <p></p>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Business Unit</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="businessunit in businessunits">
+                                <th scope="row">1</th>
+                                <td>{{businessunit.BusinessUnitName}}</td>
+                                <td>Otto</td>
+                                <td>Action</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <ul class="list-group ">
+                        <li ng-repeat="businessunit in businessunits"
+                            class="list-group-item list-group-item-primary">
+                            <a href="">
+                                <i ng-dblclick="unselected(this)" ng-click="$parent.selected = businessunit; businessunit_click(this,businessunit.BusinessUnitId);" class="fa fa-angle-left pull-right" ng-class="{'glyphicon-chevron-down': selected==businessunit, 'glyphicon-chevron-right': selected!=businessunit}" />
+                            </a>
+                            <h2 class="list-group-item-heading">
+                                <i class="fa fa-share-alt"></i>{{businessunit.BusinessUnitName}}
+                                <button data-ng-click="BusinessUnitEdit(this,businessunit)" class="btn btn-info">
+                                    <span class="fa fa-pencil-square-o"></span>
+                                </button>
+                                <button data-ng-click="BusinessUnitShowConfirm(businessunit)" class="btn btn-danger">
+                                    <span class="fa fa-trash"></span>
+                                </button>
+                            </h2>
+                            <p class="list-group-item-text">HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages.</p>
+                            <div uib-collapse="isCollapsed">
+
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <div families businessunitid=businessunit.BusinessUnitId></div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+
+<!--<div class="row">
+    <div class="col-sm-12">
+        
+    </div>
+</div>-->
+
+
+
+
+<!--<ul class="list-group">
+    <li class="list-group-item">
+        sa
+        <a ng-repeat="businessunit in businessunits"
+           ng-click="$parent.selected = businessunit;businessunit_click(this,businessunit.BusinessUnitId);"
+           class="list-group-item list-group-item-success" ng-class="{active:selected==businessunit}">
+            <i class="fa fa-building fa-2x"></i>{{businessunit.BusinessUnitName}}
+            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div families businessunitid=businessunit.BusinessUnitId></div>
+                </li>
+            </ul>
+        </a>
+    </li>
+</ul>-->
+<!--<div class="list-group">
+    <div>
+        <a ng-repeat="businessunit in businessunits" collapse
+           ng-click="$parent.selected = businessunit; businessunit_click(this,businessunit.BusinessUnitId);"
+           class="list-group-item" ng-class="{active:selected==businessunit}">
+            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': selected==businessunit, 'glyphicon-chevron-right': selected!=businessunit}"></i>
+            <h2 class="list-group-item-heading">
+                <i class="fa fa-building fa-2x"></i>{{businessunit.BusinessUnitName}}
+            </h2>
+            <p class="list-group-item-text">HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages.</p>
+        </a>
+    </div>
+    <div >
+        <div families businessunitid=businessunit.BusinessUnitId></div>
+    </div>
+
+</div>-->
+<!--<uib-accordion close-others="false" id="businessunitaccordion">
+    <div uib-accordion-group class="panel-default" ng-repeat="businessunit in businessunits" is-open="status.open">
+        <uib-accordion-heading>
+            <i class="fa fa-building fa-2x"></i>{{businessunit.BusinessUnitName}}
+            <i class="pull-right glyphicon" ng-click="businessunit_click(this,businessunit.BusinessUnitId)" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+            <div class="pull-right btn-group">
+                <button data-ng-click="BusinessUnitEdit(businessunit,$index)" class="btn btn-info btn-sm">
+                    <span class="glyphicon glyphicon glyphicon-edit"></span>
+                </button>
+                <button data-ng-click="BusinessUnitShowConfirm(businessunit)" class="btn btn-danger btn-sm">
+                    <span class="glyphicon glyphicon glyphicon-trash"></span>
+                </button>
+            </div>
+        </uib-accordion-heading>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4>
+                            <i class="fa fa-building fa-2x"></i>
+                            Business Unit:
+                            <small>{{businessunit.BusinessUnitName}}</small>
+                        </h4>
+                    </div>
+                    <div class="col-md-3">col-md-3</div>
+                    <div class="col-md-3">col-md-3</div>
+                    <div class="col-md-3">col-md-3</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-8">
+
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <button data-ng-click="BusinessUnitEdit(businessunit)" class="btn btn-info" role="button">
+                            <span class="glyphicon glyphicon glyphicon-edit"></span>Edit
+                        </button>
+                        <button data-ng-click="BusinessUnitShowConfirm(businessunit)" class="btn btn-danger" role="button">
+                            <span class="glyphicon glyphicon glyphicon-trash"></span>Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</uib-accordion>-->

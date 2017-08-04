@@ -1,0 +1,81 @@
+﻿<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <h1 >
+                <i class="fa fa-university"></i> Family
+            </h1>
+            <button data-ng-click="FamilyShowAdd()" type="button" class="btn btn-success btn-sm">Add Family <span class="glyphicon glyphicon glyphicon-plus"></span></button>
+            <p></p>
+            <ul class="list-group ">
+                <li ng-repeat="family in families"
+                    class="list-group-item list-group-item-default">
+                    <a href="">
+                        <i ng-dblclick="unselected(this)" ng-click="$parent.selected = family; family_click(this,family.FamilyId);" class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': selected==family, 'glyphicon-chevron-right': selected!=family}" />
+                    </a>
+                    <h4 class="list-group-item-heading">
+                        <i class="fa fa-university "></i>{{family.FamilyName}}
+                        <button data-ng-click="BusinessUnitEdit(this,businessunit)" class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon glyphicon-edit"></span>
+                        </button>
+                        <button data-ng-click="BusinessUnitShowConfirm(businessunit)" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon glyphicon-trash"></span>
+                        </button>
+                    </h4>
+                    <div uib-collapse="isCollapsed" class="well">
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <!--<div families businessunitid=businessunit.BusinessUnitId></div>-->
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+            </ul>      
+            <!--<uib-accordion close-others="true" id="familyaccordion">
+                <div uib-accordion-group class="panel-primary" ng-repeat="family in families" is-open="status.open">
+                    <uib-accordion-heading>
+                        <div ng-click="family_click(this,family.FamilyId)">
+                            <i class="fa fa-university"></i>{{family.FamilyName}}
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        </div>
+                    </uib-accordion-heading>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <i class="fa fa-university fa-5x"></i>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-8">
+                                    <h3>
+                                        Family:
+                                        <small>{{family.FamilyName}}</small>
+                                    </h3>
+                                </div>
+                                <div class="col-xs-6 col-md-4">
+                                    <button data-ng-click="FamilyEdit(family)" class="btn btn-info" role="button">
+                                        <span class="glyphicon glyphicon glyphicon-edit"></span>Edit
+                                    </button>
+                                    <button data-ng-click="FamilyShowConfirm(family)" class="btn btn-danger" role="button">
+                                        <span class="glyphicon glyphicon glyphicon-trash"></span>Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-body">
+                                <div models familyid=family.FamilyId></div>
+                            </div>
+                        </div>
+                </div>
+            </uib-accordion>-->
+        </div>
+    </div>
+</div>
+
+

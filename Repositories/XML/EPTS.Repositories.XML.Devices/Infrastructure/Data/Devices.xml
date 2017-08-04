@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+ <Devices>
+   <SeaMaxDeviceRepository>
+     <SeaIO420>
+       <DeviceId>1</DeviceId>
+       <DeviceName>0420</DeviceName>
+       <DeviceDescription>Sea Level I/O 0420</DeviceDescription>
+       <COM>COM5</COM>
+       <SlaveId>247</SlaveId>
+       <DigitalInput>
+         <Description>Sensor de Salida</Description>
+       </DigitalInput>
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput>           
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput>  
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput>  
+       <DigitalInput>
+         <Description>Sensor de Entrada</Description>
+       </DigitalInput>         
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput>       
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput> 
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput> 
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput> 
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput> 
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput> 
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput> 
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput> 
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput> 
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput> 
+       <DigitalInput>
+         <Description>NA</Description>
+       </DigitalInput> 
+       <DigitalOutput>
+         <Description>Rojo</Description>
+       </DigitalOutput>  
+       <DigitalOutput>
+         <Description>Naranja</Description>
+       </DigitalOutput>           
+       <DigitalOutput>         
+         <Description>Verde</Description>
+       </DigitalOutput>   
+       <DigitalOutput>        
+         <Description>Piston</Description>
+       </DigitalOutput>   
+       <DigitalOutput>     
+         <Description>NA</Description>
+       </DigitalOutput>   
+       <DigitalOutput>   
+         <Description>Conveyor Entrada</Description>
+       </DigitalOutput>   
+       <DigitalOutput>     
+         <Description>NA</Description>
+       </DigitalOutput>   
+       <DigitalOutput>     
+         <Description>Conveyor Salida</Description>
+       </DigitalOutput>
+     </SeaIO420>
+   </SeaMaxDeviceRepository>
+   <VisaComDeviceRepository>
+		<Scanner>
+			<DeviceId>1</DeviceId>
+			<DeviceName>SCANNER COGNEX</DeviceName>
+			<DeviceDescription>SCANNER COGNEX 100X</DeviceDescription>
+			<DeviceAddress>ASRL8</DeviceAddress>
+			<BaudRate>115200</BaudRate>
+			<TimeOut>10</TimeOut>
+			<Trigger>T</Trigger>
+		</Scanner>
+    <DMM>
+      <DeviceId>2</DeviceId>
+      <DeviceName>DMM</DeviceName>
+      <DeviceDescription>DMM</DeviceDescription>
+      <DeviceAddress>ASRL8</DeviceAddress>
+    </DMM>	
+    <Power>
+      <DeviceId>2</DeviceId>
+      <DeviceName>DMM</DeviceName>
+      <DeviceDescription>DMM</DeviceDescription>
+      <DeviceAddress>ASRL8</DeviceAddress>
+    </Power>	        
+	</VisaComDeviceRepository>
+   <SocketDeviceRepository>
+		<CamLine>
+        <DeviceId>1</DeviceId>
+        <DeviceName>CAMLINE</DeviceName>
+        <DeviceDescription>Comunucaction TCPIP COMCELL</DeviceDescription>
+        <IpAddress>10.113.136.55</IpAddress>
+        <Port>8209</Port>        
+		</CamLine>
+    <Robot>
+      <DeviceId>1</DeviceId>
+      <DeviceName>CAMLINE</DeviceName>
+      <DeviceDescription>Comunucaction TCPIP COMCELL</DeviceDescription>
+      <IpAddress>10.113.136.55</IpAddress>
+      <Port>8209</Port>
+    </Robot>
+    <Modbus-TCP>
+       <DeviceId>1</DeviceId>
+       <DeviceName>Mod Bus</DeviceName>
+       <DeviceDescription>Comunucaction TCPIP COMCELL</DeviceDescription>
+       <IpAddress>10.113.136.55</IpAddress>
+       <Port>8209</Port>
+     </Modbus-TCP>
+   </SocketDeviceRepository>
+   <ComDeviceRepository>
+     <Modbus-Serial>
+       <DeviceId>1</DeviceId>
+       <DeviceName>Mod Bus</DeviceName>
+       <DeviceDescription>Comunucaction TCPIP COMCELL</DeviceDescription>       
+       <Com>COM1</Com>       
+       <BaudRate>9600</BaudRate>
+     </Modbus-Serial>
+     <Com>
+       <DeviceId>1</DeviceId>
+       <DeviceName>Mod Bus</DeviceName>
+       <DeviceDescription>Comunucaction TCPIP COMCELL</DeviceDescription>
+       <Com>COM2</Com>
+       <BaudRate>9600</BaudRate>
+     </Com>
+   </ComDeviceRepository>
+</Devices>

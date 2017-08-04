@@ -1,0 +1,59 @@
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="testplanModalLabel">
+                    <i class="fa fa-share-alt"></i> {{ testplanEditmode!=0 ? 'Edit TestPlan':'Add TestPlan' ;   }}
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" name="testplanform">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">TestPlan Id</label>
+                        <div class="col-sm-10">
+                            <span>{{testplan.TestPlanId}}</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': testplanform.testplanname.$valid && testplanform.testplanname.$dirty,
+                                    'form-group has-error has-feedback': (testplanform.testplanname.$invalid && testplanform.testplanname.$dirty) || testplanform.testplanname.$error.required ,
+                                    'form-group ': !testplanform.testplanname.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">TestPlan Name</label>
+                        <div class="col-sm-10">
+                            <input placeholder="TestPlan Name" required type="text" id="testplanname"
+                                   name="testplanname" ng-model="testplan.TestPlanName" title="Enter The TestPlan Name"
+                                   ng-minlength="5" ng-maxlength="20" class="form-control" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testplanform.testplanname.$valid && testplanform.testplanname.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testplanform.testplanname.$invalid && testplanform.testplanname.$dirty,
+                                             '':!testplanform.testplanname.$dirty}"></span>
+                            <span ng-show="testplanform.testplanname.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!testplanform.testplanname.$error.required && (testplanform.testplanname.$error.minlength || testplanform.testplanname.$error.maxlength) && testplanform.testplanname.$dirty" class="label label-danger">TestPlan Name ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': testplanform.businessunit.$valid && testplanform.businessunit.$dirty,
+                                    'form-group has-error has-feedback': (testplanform.businessunit.$invalid && testplanform.businessunit.$dirty) || testplanform.businessunit.$error.required ,
+                                    'form-group ': !testplanform.businessunitname.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Business Unit</label>
+                        <div class="col-sm-10">
+                            <select name="businessunit" class="form-control" required ng-model="selectedItem" ng-options="item as item.BusinessUnitName for item in businessunits track by item.BusinessUnitId" ng-change="update(selectedItem)">
+                            </select>
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testplanform.v.$valid && testplanform.businessunit.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testplanform.businessunit.$invalid && testplanform.businessunit.$dirty,
+                                             '':!testplanform.businessunit.$dirty}"></span>
+                            <span ng-show="testplanform.businessunit.$error.required " class="label label-danger">Required!</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <span data-ng-hide="testplanEditmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="testplanform.$invalid" class="btn btn-primary" data-dismiss="modal">Add</button>
+                </span>
+                <span data-ng-show="testplanEditmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="testplanform.$invalid || !testplanform.$dirty" class="btn btn-primary" data-dismiss="modal">Update</button>
+                </span>
+                <button type="button" ng-click="close(false)" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

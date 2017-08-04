@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="EPTS.UI.WPF.Views.Devices.SEAMAX.SeaMaxViewModel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EPTS.UI.WPF.Views.Devices.SEAMAX"
+             mc:Ignorable="d" 
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" d:DesignHeight="96" d:DesignWidth="392">
+    <Grid Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid  Height="auto" Width="auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0"  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="200"  />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" controls:TextBoxHelper.ClearTextButton="True"  Grid.Column="0" Text="Device Id: " FontWeight="ExtraBold"></TextBlock>
+                <TextBlock Grid.Row="0" controls:TextBoxHelper.ClearTextButton="True" controls:TextBoxHelper.Watermark="Device Id" Grid.Column="1" Text="{Binding DeviceId}" VerticalAlignment="Stretch"  HorizontalAlignment="Left"  />
+                <TextBlock Grid.Row="1" controls:TextBoxHelper.ClearTextButton="True" Grid.Column="0" Text="Device Name: " FontWeight="ExtraBold"  />
+                <TextBlock Grid.Row="1" controls:TextBoxHelper.ClearTextButton="True" controls:TextBoxHelper.Watermark="Device Name" Grid.Column="1" Text="{Binding DeviceName}" VerticalAlignment="Stretch"  HorizontalAlignment="Left"   />
+                <TextBlock Grid.Row="2" controls:TextBoxHelper.ClearTextButton="True" Grid.Column="0" Text="Device Description: " FontWeight="ExtraBold"  />
+                <TextBlock Grid.Row="2" controls:TextBoxHelper.ClearTextButton="True" controls:TextBoxHelper.Watermark="Device Description" Grid.Column="1" Text="{Binding DeviceDescription}" VerticalAlignment="Stretch"  HorizontalAlignment="Left" Width="0"   />
+                <TextBlock Grid.Row="3" controls:TextBoxHelper.ClearTextButton="True" Grid.Column="0" Text="Device Address:  " FontWeight="ExtraBold"  />
+                <TextBlock Grid.Row="3" controls:TextBoxHelper.ClearTextButton="True" controls:TextBoxHelper.Watermark="COM" Grid.Column="1" Text="{Binding Path=COM, Mode=OneWay}" VerticalAlignment="Stretch"   HorizontalAlignment="Left"    />
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Slave Id: " FontWeight="ExtraBold" />
+                <TextBlock Grid.Row="4" controls:TextBoxHelper.ClearTextButton="True" controls:TextBoxHelper.Watermark="SlaveId" Grid.Column="1" Text="{Binding Path=SlaveId, Mode=OneWay}" VerticalAlignment="Stretch"  HorizontalAlignment="Left"   />
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

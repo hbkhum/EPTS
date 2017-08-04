@@ -1,0 +1,59 @@
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="lineModalLabel">
+                    <i class="fa fa-share-alt"></i> {{ lineEditmode!=0 ? 'Edit Line':'Add Line' ;   }}
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" name="lineform">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">Line Id</label>
+                        <div class="col-sm-10">
+                            <span>{{line.LineId}}</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': lineform.linename.$valid && lineform.linename.$dirty,
+                                    'form-group has-error has-feedback': (lineform.linename.$invalid && lineform.linename.$dirty) || lineform.linename.$error.required ,
+                                    'form-group ': !lineform.linename.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Line Name</label>
+                        <div class="col-sm-10">
+                            <input placeholder="Line Name" required type="text" id="linename"
+                                   name="linename" ng-model="line.LineName" title="Enter The Line Name"
+                                   ng-minlength="5" ng-maxlength="20" class="form-control" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': lineform.linename.$valid && lineform.linename.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': lineform.linename.$invalid && lineform.linename.$dirty,
+                                             '':!lineform.linename.$dirty}"></span>
+                            <span ng-show="lineform.linename.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!lineform.linename.$error.required && (lineform.linename.$error.minlength || lineform.linename.$error.maxlength) && lineform.linename.$dirty" class="label label-danger">Line Name ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': lineform.businessunit.$valid && lineform.businessunit.$dirty,
+                                    'form-group has-error has-feedback': (lineform.businessunit.$invalid && lineform.businessunit.$dirty) || lineform.businessunit.$error.required ,
+                                    'form-group ': !lineform.businessunitname.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Business Unit</label>
+                        <div class="col-sm-10">
+                            <select name="businessunit" class="form-control" required ng-model="selectedItem" ng-options="item as item.BusinessUnitName for item in businessunits track by item.BusinessUnitId" ng-change="update(selectedItem)">
+                            </select>
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': lineform.v.$valid && lineform.businessunit.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': lineform.businessunit.$invalid && lineform.businessunit.$dirty,
+                                             '':!lineform.businessunit.$dirty}"></span>
+                            <span ng-show="lineform.businessunit.$error.required " class="label label-danger">Required!</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <span data-ng-hide="lineEditmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="lineform.$invalid" class="btn btn-primary" data-dismiss="modal">Add</button>
+                </span>
+                <span data-ng-show="lineEditmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="lineform.$invalid || !lineform.$dirty" class="btn btn-primary" data-dismiss="modal">Update</button>
+                </span>
+                <button type="button" ng-click="close(false)" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

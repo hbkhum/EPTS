@@ -1,0 +1,61 @@
+﻿<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="businessunitModalLabel">
+                    <i class="fa fa-share-alt"></i> {{ businessunit_editmode!=0 ? 'Edit Business Unit':'Add Business Unit' ;   }}
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" name="businessunitform">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">Business Unit Id</label>
+                        <div class="col-sm-10">
+                            <span>{{businessunit.BusinessUnitId}}</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': businessunitform.businessunitname.$valid && businessunitform.businessunitname.$dirty,
+                                    'form-group has-error has-feedback': (businessunitform.businessunitname.$invalid && businessunitform.businessunitname.$dirty) || businessunitform.businessunitname.$error.required ,
+                                    'form-group ': !businessunitform.businessunitname.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Business Name</label>
+                        <div class="col-sm-10">                            
+                            <input placeholder="Business Unit Name" required  type="text" id="businessunitname"
+                                   name="businessunitname" ng-model="businessunit.BusinessUnitName" title="Enter The Business Unit"
+                                   ng-minlength="3" ng-maxlength="20" class="form-control" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': businessunitform.businessunitname.$valid && businessunitform.businessunitname.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': businessunitform.businessunitname.$invalid && businessunitform.businessunitname.$dirty,
+                                             '':!businessunitform.businessunitname.$dirty}"></span>
+                            <span ng-show="businessunitform.businessunitname.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!businessunitform.businessunitname.$error.required && (businessunitform.businessunitname.$error.minlength || businessunitform.businessunitname.$error.maxlength) && businessunitform.businessunitname.$dirty" class="label label-danger">Business Unit Name ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': businessunitform.businessunitdescription.$valid && businessunitform.businessunitdescription.$dirty,
+                                    'form-group has-error has-feedback': (businessunitform.businessunitdescription.$invalid && businessunitform.businessunitdescription.$dirty) || businessunitform.businessunitdescription.$error.required,
+                                    'form-group ': !businessunitform.businessunitdescription.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-10">
+                            <input placeholder="Business Unit Description" required type="text" id="businessunitdescription"
+                                   name="businessunitdescription" data-ng-model="businessunit.BusinessUnitDescription" title="Enter The Business Unit Description"
+                                   ng-minlength="5" ng-maxlength="20" class="form-control" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': businessunitform.businessunitdescription.$valid && businessunitform.businessunitdescription.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': businessunitform.businessunitdescription.$invalid && businessunitform.businessunitdescription.$dirty,
+                                             '':!businessunitform.businessunitdescription.$dirty}"></span>
+                            <span ng-show="businessunitform.businessunitdescription.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!businessunitform.businessunitdescription.$error.required && (businessunitform.businessunitdescription.$error.minlength || businessunitform.businessunitdescription.$error.maxlength) && businessunitform.businessunitdescription.$dirty" class="label label-danger">Business Unit Description ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <span data-ng-hide="businessunit_editmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="businessunitform.$invalid" class="btn btn-primary" data-dismiss="modal">Add</button>
+                </span>
+                <span data-ng-show="businessunit_editmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="businessunitform.$invalid || !businessunitform.$dirty" class="btn btn-primary" data-dismiss="modal">Update</button>
+                </span>
+                <button type="button" ng-click="close(false)" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

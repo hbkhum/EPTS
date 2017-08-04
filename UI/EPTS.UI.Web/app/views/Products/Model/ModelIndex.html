@@ -1,0 +1,51 @@
+﻿<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <h1>
+                <i class="fa fa-globe"></i> Model
+            </h1>
+            <button data-ng-click="ModelShowAdd()" type="button" class="btn btn-success btn-sm">Add Model <span class="glyphicon glyphicon glyphicon-plus"></span></button>
+            <p></p>
+            <uib-accordion close-others="true" id="modelaccordion">
+                <div uib-accordion-group class="panel-primary" ng-repeat="model in models" is-open="status.open">
+                    <uib-accordion-heading>
+                        <div ng-click="model_click(this,model.ModelId)">
+                            <i class="fa fa-globe"></i>{{model.ModelName}}
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        </div>
+                    </uib-accordion-heading>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <i class="fa fa-globe fa-5x"></i>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-8">
+                                    <h3>
+                                        Model:
+                                        <small>{{model.ModelName}}</small>
+                                    </h3>
+                                </div>
+                                <div class="col-xs-6 col-md-4">
+                                    <button data-ng-click="ModelEdit(model)" class="btn btn-info" role="button">
+                                        <span class="glyphicon glyphicon glyphicon-edit"></span>Edit
+                                    </button>
+                                    <button data-ng-click="ModelShowConfirm(model)" class="btn btn-danger" role="button">
+                                        <span class="glyphicon glyphicon glyphicon-trash"></span>Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div modeldetails modelid=model.ModelId/>
+                        </div>
+                    </div>
+            </uib-accordion>
+        </div>
+    </div>
+</div>
