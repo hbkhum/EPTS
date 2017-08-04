@@ -31,7 +31,6 @@ namespace Devices.Com
                 throw new Exception(HandlerError.ErrorMsg);
             }
         }
-
         public void Write(string message)
         {
             HandlerError.ClearErrors();
