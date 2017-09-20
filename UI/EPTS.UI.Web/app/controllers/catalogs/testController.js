@@ -66,24 +66,38 @@ app.controller('testIndexController', function postController($scope, testFactor
     * Signalr client functions
     *
     ***************************************************************************/
-    testHub.on("AddTest", function (item) {
-        $scope.tests.unshift(item);
-        $scope.$apply(); // this is outside of angularjs, so need to apply
-    });
+    //testHub.on("AddTest", function (item) {
+    //    $scope.tests.unshift(item);
+    //    $scope.$apply(); // this is outside of angularjs, so need to apply
+    //});
 
-    testHub.on("UpdateTest", function (item) {
-        var index = db.searchIndex($scope.tests, "TestId", item.TestId);
-        $scope.tests[index].TestName = item.TestName;
-        $scope.$apply(); // this is outside of angularjs, so need to apply
-    });
+    //testHub.on("UpdateTest", function (item) {
+    //    var index = db.searchIndex($scope.tests, "TestId", item.TestId);
+    //    $scope.tests[index].TestName = item.TestName;
+    //    $scope.$apply(); // this is outside of angularjs, so need to apply
+    //});
 
-    testHub.on("DeleteTest", function (item) {
-        var index = db.searchIndex($scope.tests, "TestId", item.TestId);
-        $scope.tests.splice(index, 1);
-        $scope.$apply(); // this is outside of angularjs, so need to apply
-    });
+    //testHub.on("DeleteTest", function (item) {
+    //    var index = db.searchIndex($scope.tests, "TestId", item.TestId);
+    //    $scope.tests.splice(index, 1);
+    //    $scope.$apply(); // this is outside of angularjs, so need to apply
+    //});
 
-    connection.start();
+    //connection.start();
+    $scope.$on('TestGroupId_click', function (e, id) {
+        $scope.isCollapsed = $scope.isCollapsed === 0 ? true : false;
+        $scope.TestPlanId = id;
+        if ($scope.isCollapsed === false) {
+            testFactory.GetTestGroupByTestPlanId(id)
+                .then(function (reponse) {
+                    $scope.tests = reponse.result;
+                    $scope.totalItems = $scope.tests.length;
+
+                }, function (error) {
+                    db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Loading Business Unit! ' + error.ExceptionInformation);
+                });
+        }
+    });
 
     /***************************************************************************
     *
@@ -231,13 +245,13 @@ app.controller('testIndexController', function postController($scope, testFactor
     $scope.TestCancel = function (currenttest) {
         $scope.GetTest(currenttest);
     }
-    var menu = $(".main-sidebar").find('.sidebar-menu').find('.treeview');
-    menu.removeClass('active');
-    var submenu = menu.find("a:contains('Familes')");
-    submenu.click();
-    $scope.GetTests();
-    $scope.orderByField = 'TestName';
-    $scope.reverseSort = false;
+    //var menu = $(".main-sidebar").find('.sidebar-menu').find('.treeview');
+    //menu.removeClass('active');
+    //var submenu = menu.find("a:contains('Familes')");
+    //submenu.click();
+    //$scope.GetTests();
+    //$scope.orderByField = 'TestName';
+    //$scope.reverseSort = false;
 });
 
 

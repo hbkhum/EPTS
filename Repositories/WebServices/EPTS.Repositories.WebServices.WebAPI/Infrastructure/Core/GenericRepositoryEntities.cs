@@ -23,7 +23,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Core
             //
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(string whereValue, string orderBy)
+        public async Task<IEnumerable<T>> GetAllAsync(string whereValue,  string orderBy)
         {
             if (whereValue == "") whereValue = "true";
             if (orderBy == "") orderBy = "true";

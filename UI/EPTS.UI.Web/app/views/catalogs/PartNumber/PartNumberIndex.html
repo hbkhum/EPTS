@@ -31,111 +31,109 @@
                                 </div>
 
                                 <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-condensed table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        <div class="rows">
-                                                            #
-                                                        </div>
-                                                        <div class="rows">
-                                                        </div>
-                                                    </th>
-                                                    <th>
-                                                        <div class="rows">
-                                                            <a href="" ng-click="orderByField='PartName'; reverseSort = !reverseSort">
-                                                                Part Number
-                                                                <span ng-show="orderByField == 'PartName'">
-                                                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
-                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span></span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="input-group">
-                                                            <input ng-model="search.PartName" id="search" class="form-control input-sm" placeholder="Part Number text">
-                                                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
-                                                        </div>
-                                                    </th>
-                                                    <th>
-                                                        <div class="rows">
-                                                            <a href="" ng-click="orderByField='Description'; reverseSort = !reverseSort">
-                                                                Description
-                                                                <span ng-show="orderByField == 'Description'">
-                                                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
-                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span></span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="input-group">
-                                                            <input ng-model="search.Description" id="search" class="form-control input-sm" placeholder="Business Unit text">
-                                                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
-                                                        </div>
-                                                    </th>
-                                                    <th>Revision</th>
-                                                    <th>Active</th>
-                                                    <th>
-                                                        <div class="rows">
-                                                            <div class="text-center">
-                                                                <button data-ng-click="PartNumberShowAdd()" type="button" class="btn btn-success  btn-xs">
-                                                                    <span class="fa fa-plus-circle"></span> Add PartNumber
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody >
-                                                <tr dir-paginate="partNumber in partnumbers | filter:search | filter:q| itemsPerPage: pageSize |orderBy:orderByField:reverseSort" current-page="currentPage">
-                                                    <th scope="row">
-                                                        <span class="pull-left-container">
-                                                            <span class="label label-primary pull-left">{{$index+1}}</span>
-                                                        </span>
 
-                                                    </th>
-                                                    <td>
-                                                        {{partNumber.PartName}}
-                                                    </td>
-                                                    <td>
-                                                        {{partNumber.Description}}
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" ng-model="partNumber.Revision" ng-disabled="true" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="checkbox" ng-model="partNumber.Active" ng-disabled="true" />
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-center">
+                                    <div class="panel-heading row">
+                                        <div class="col-sm-1 col-xs-12 pull-left">#</div>
+                                        <div class="col-sm-3 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <a href="" ng-click="orderByField='PartNumber.PartNumberName'; reverseSort = !reverseSort;Change()">
+                                                    Part Number
+                                                    <span ng-show="orderByField == 'PartNumber.PartNumberName'">
+                                                        <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="input-group">
+                                                <input ng-model="search.PartNumberName" id="search" class="form-control input-sm" placeholder="Part Number text" ng-change="Change()">
+                                                <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <a href="" ng-click="orderByField='PartNumber.Description'; reverseSort = !reverseSort;Change()">
+                                                    Description
+                                                    <span ng-show="orderByField == 'PartNumber.Description'">
+                                                        <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="input-group">
+                                                <input ng-model="search.Description" id="search" class="form-control input-sm" placeholder="Business Unit text" ng-change="Change()">
+                                                <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <p></p>
+                                            </div>
+                                            Revision
+                                        </div>
+                                        <div class="col-sm-1 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <p></p>
+                                            </div>
+                                            Revision
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <p></p>
+                                            </div>
+                                            <div class="rows">
+                                                <div class="text-center">
+                                                    <button data-ng-click="PartNumberShowAdd()" type="button" class="btn btn-success  btn-xs">
+                                                        <span class="fa fa-plus-circle"></span> Add PartNumber
+                                                    </button>
+                                                </div>
+                                            </div>
 
-
-                                                            <div class="btn-group">
-                                                                <button data-ng-click="PartNumberEdit(this,partNumber)" class="btn btn-info btn-xs" type="button">
-                                                                    <span class="fa fa-pencil-square-o"></span> Edit
-                                                                </button>
-                                                                <button data-ng-click="PartNumberShowConfirm(partNumber)" class="btn btn-danger btn-xs" type="button">
-                                                                    <span class="fa fa-trash"></span> Delete
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        </div>
                                     </div>
-                                    <div class="row">
+                                    <div ng-repeat="modeldetail in modeldetails">
+                                        <div>
+                                            <div class="col-sm-1 col-xs-12 pull-left">
+                                                <span class="pull-left-container">
+                                                    <span class="label label-primary pull-left">{{$index+1}}</span>
+                                                </span>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-12  pull-left" data-ng-bind="modeldetail.PartNumber.PartNumberName"></div>
+                                            <div class="col-sm-3 col-xs-12  pull-left" data-ng-bind="modeldetail.PartNumber.Description"></div>
+                                            <div class="col-sm-1 col-xs-12  pull-left">
+                                                <input type="checkbox" ng-model="modeldetail.PartNumber.Revision" ng-disabled="true"/>
+                                            </div>
+                                            <div class="col-sm-1 col-xs-12  pull-left">
+                                                <input type="checkbox" ng-model="modeldetail.PartNumber.Active" ng-disabled="true"/>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-12  pull-left">
+                                                <div class="btn-group">
+                                                    <button data-ng-click="PartNumberEdit(this,modeldetail.PartNumber)" class="btn btn-info btn-xs" type="button">
+                                                        <span class="fa fa-pencil-square-o"></span> Edit
+                                                    </button>
+                                                    <button data-ng-click="PartNumberShowConfirm(modeldetail)" class="btn btn-danger btn-xs" type="button">
+                                                        <span class="fa fa-trash"></span> Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="rows">
                                         <div class="col-xs-1">
                                         </div>
                                         <div class="col-xs-10">
-                                            <div>
-                                                <div ng-controller="partnumberPaginationController" class="other-controller">
-                                                    <div class="text-center">
-                                                        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="scripts/dirPagination.tpl.html"></dir-pagination-controls>
-                                                    </div>
-                                                </div>
+                                            <div class="text-center" ng-show="totalItems>pageSize">
+                                                <ul uib-pagination total-items="totalItems" items-per-page="pageSize" ng-change="pageChanged()" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" direction-links="true"></ul>
                                             </div>
                                         </div>
                                         <div class="col-xs-1">
                                         </div>
                                     </div>
+
+                                    
+
                                 </div>
                             </div>
                         </div>

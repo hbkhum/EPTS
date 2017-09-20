@@ -18,7 +18,6 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
 
         TestGroupLinkService TestGroupLinkService { get; set; }
         TestGroupService TestGroupService { get; set; }
-        TestLinkService TestLinkService { get; set; }
         TestPlanLinkService TestPlanLinkService { get; set; }
         TestPlanService TestPlanService { get; set; }
         TestService TestService { get; set; }
@@ -28,7 +27,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
     }
     public class DataServices : IDataServices
     {
-        public DataServices(BusinessUnitService businessUnitService, FamilyService familyService, FlowService flowService, LineService lineService, ModelService modelService, ModelDetailService modelDetailService, PartNumberService partNumberService, StationService stationService, TestGroupLinkService testGroupLinkService, TestGroupService testGroupService, TestLinkService testLinkService, TestPlanLinkService testPlanLinkService, TestPlanService testPlanService, TestService testService, TestTypeService testTypeService, TestUnitService testUnitService)
+        public DataServices(BusinessUnitService businessUnitService, FamilyService familyService, FlowService flowService, LineService lineService, ModelService modelService, ModelDetailService modelDetailService, PartNumberService partNumberService, StationService stationService, TestGroupLinkService testGroupLinkService, TestGroupService testGroupService,  TestPlanLinkService testPlanLinkService, TestPlanService testPlanService, TestService testService, TestTypeService testTypeService, TestUnitService testUnitService)
         {
             BusinessUnitService = businessUnitService;
             FamilyService = familyService;
@@ -40,7 +39,6 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
             StationService = stationService;
             TestGroupLinkService = testGroupLinkService;
             TestGroupService = testGroupService;
-            TestLinkService = testLinkService;
             TestPlanLinkService = testPlanLinkService;
             TestPlanService = testPlanService;
             TestService = testService;
@@ -59,7 +57,6 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
 
         public TestGroupLinkService TestGroupLinkService { get; set; }
         public TestGroupService TestGroupService { get; set; }
-        public TestLinkService TestLinkService { get; set; }
         public TestPlanLinkService TestPlanLinkService { get; set; }
         public TestPlanService TestPlanService { get; set; }
         public TestService TestService { get; set; }

@@ -14,11 +14,9 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Catalogs
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid LineId { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(15)]
+        [StringLength(15)]
+        [Index(IsUnique = true)]
         [Required]
         public string LineName { get; set; }
-
-        //public virtual ICollection<Station> Stations { get; set; }
     }
 }

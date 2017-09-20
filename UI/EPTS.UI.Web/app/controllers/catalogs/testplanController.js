@@ -84,6 +84,10 @@ app.controller('testplanIndexController', function postController($scope, testpl
     });
 
     connection.start();
+    $scope.collapse = function (event, childScope, id) {
+        $(event.target).toggleClass("glyphicon-chevron-down");
+        childScope.$broadcast('TestPlanId_click', id);
+    };
 
     /***************************************************************************
     *
@@ -233,7 +237,7 @@ app.controller('testplanIndexController', function postController($scope, testpl
     }
     var menu = $(".main-sidebar").find('.sidebar-menu').find('.treeview');
     menu.removeClass('active');
-    var submenu = menu.find("a:contains('Familes')");
+    var submenu = menu.find("a:contains('Test Plan')");
     submenu.click();
     $scope.GetTestPlans();
     $scope.orderByField = 'TestPlanName';

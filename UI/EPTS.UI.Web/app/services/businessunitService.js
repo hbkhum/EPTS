@@ -6,9 +6,9 @@ app.factory('businessunitFactory', function ($http,$q) {
     var url = "";
 
     return {
-        GetBusinessUnits: function () {
+        GetBusinessUnits: function (pageSize, pageNumber, orderby, wherevalue) {
             url = baseAddress + 'BusinessUnit/';
-            return $http.get(url)
+            return $http.get(url, { params: { "pageSize": pageSize, "pageNumber": pageNumber, "orderby": orderby, "wherevalue": wherevalue } })
                 .then(function (response) {
                     if (typeof response.data === 'object') {
                         return response.data;

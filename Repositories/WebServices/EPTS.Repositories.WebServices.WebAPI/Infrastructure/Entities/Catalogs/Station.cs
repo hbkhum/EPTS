@@ -13,21 +13,25 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Catalogs
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid StationId { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(15)]
+        [StringLength(15)]
+        [Index(IsUnique = true)]
         [Required]
         public string StationName { get; set; }
 
 
         [ForeignKey("LineId")]
-        [Required]
         public virtual Line Line { get; set; }
+
+        [Required]
         public Guid LineId { get; set; }
 
+
         [ForeignKey("StationTypeId")]
-        [Required]
         public virtual StationType StationType { get; set; }
+
+        [Required]
         public Guid StationTypeId { get; set; }
+
 
 
     }

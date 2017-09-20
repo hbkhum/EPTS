@@ -60,6 +60,31 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
             }
             return null;
         }
+
+        [Route("TestGroup/{id:Guid}")]
+        public async Task<IHttpActionResult> GetTestGroupByTestPlanId(Guid id, string type = "json")
+        {
+            var pageSize = 50000;
+            var pageNumber = 1;
+            var result = await _dataServices.TestService.GetAllTestByTestGroupId(id);
+            var data = result as IList<Test> ?? result.ToList();
+            var totalCount = data.Count();
+            var totalPages = Math.Ceiling((double)totalCount / pageSize);
+            if (type == "json")
+            {
+                var results = new
+                {
+                    TotalCount = totalCount,
+                    totalPages = Math.Ceiling((double)totalCount / pageSize),
+                    result = data
+                        .Skip((pageNumber - 1) * pageSize)
+                        .Take(pageSize)
+                        .ToList()
+                };
+                return Ok(results);
+            }
+            return null;
+        }
         [Route("")]
         public async Task<Guid?> Post(Test test)
         {

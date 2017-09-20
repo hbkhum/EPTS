@@ -29,6 +29,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
         {
             var result = await _dataServices.TestGroupService.GetAllTestGroups(whereValue, orderBy);
             var data = result as IList<TestGroup> ?? result.ToList();
+            //TestPlan.TestGroup[0].Test[0]
             var totalCount = data.Count();
             var totalPages = Math.Ceiling((double)totalCount / pageSize);
             if (type == "json")
@@ -55,6 +56,30 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
             if (type == "json")
             {
                 return Ok(result);
+            }
+            return null;
+        }
+        [Route("TestPlan/{id:Guid}")]
+        public async Task<IHttpActionResult> GetTestGroupByTestPlanId(Guid id, string type = "json")
+        {
+            var pageSize = 50000;
+            var pageNumber = 1;
+            var result = await _dataServices.TestGroupService.GetAllTestGroupByTestPlanId(id);
+            var data = result as IList<TestGroup> ?? result.ToList();
+            var totalCount = data.Count();
+            var totalPages = Math.Ceiling((double)totalCount / pageSize);
+            if (type == "json")
+            {
+                var results = new
+                {
+                    TotalCount = totalCount,
+                    totalPages = Math.Ceiling((double)totalCount / pageSize),
+                    result = data
+                        .Skip((pageNumber - 1) * pageSize)
+                        .Take(pageSize)
+                        .ToList()
+                };
+                return Ok(results);
             }
             return null;
         }

@@ -20,6 +20,20 @@ app.factory('testgroupFactory', function ($http, $q) {
                     return $q.reject(response.data);
                 });
         },
+        GetTestGroupByTestPlanId: function (testplan) {
+            url = baseAddress + 'TestGroup/TestPlan/' + testplan;
+            return $http.get(url)
+                .then(function (response) {
+                    if (typeof response.data === 'object') {
+                        return response.data;
+                    } else {
+                        return q.reject(response.data);
+                    }
+                }, function (response) {
+                    // something went wrong
+                    return $q.reject(response.data);
+                });
+        },
         GetTestGroup: function (testgroup) {
             url = baseAddress + 'TestGroup/' + testgroup.TestGroupId;
             return $http.get(url)

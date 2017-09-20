@@ -27,6 +27,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
         [Route("{pageSize:int?}/{pageNumber:int?}/{orderby:alpha?}/{wherevalue:alpha?}/{type:alpha?}")]
         public async Task<IHttpActionResult> Get(int pageSize = 5000, int pageNumber = 1, string whereValue = "", string orderBy = "", string type = "json")
         {
+            whereValue = whereValue ?? "";
             var result = await _dataServices.PartNumberService.GetAllPartNumbers(whereValue, orderBy);
             var data = result as IList<PartNumber> ?? result.ToList();
             var totalCount = data.Count();
@@ -60,13 +61,12 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
             return null;
         }
         // GET api/partnumberapi/model/5
-        [Route("Model/{id:Guid}")]
-        public async Task<IHttpActionResult> GetPartNumberByModelId(Guid id, string type = "json")
+        [Route("Model/{id:Guid}/{pageSize:int?}/{pageNumber:int?}/{orderby:alpha?}/{wherevalue:alpha?}/{type:alpha?}")]
+        public async Task<IHttpActionResult> GetPartNumberByModelId(Guid id, int pageSize = 5000, int pageNumber = 1, string whereValue = "", string orderBy = "", string type = "json")
         {
-            var pageSize = 50000;
-            var pageNumber = 1;
-            var result = await _dataServices.PartNumberService.GetAllPartNumbersByModelId(id);
-            var data = result as IList<PartNumber> ?? result.ToList();
+            whereValue = whereValue ?? "";
+            var result = await _dataServices.PartNumberService.GetAllPartNumbersByModelId(id, whereValue, orderBy);
+            var data = result as IList<ModelDetail> ?? result.ToList();
             var totalCount = data.Count();
             var totalPages = Math.Ceiling((double)totalCount / pageSize);
             if (type == "json")

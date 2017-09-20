@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 
 namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Catalogs
 {
@@ -13,16 +14,14 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Catalogs
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid BusinessUnitId { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(30)]
+        [StringLength(30)]
+        [Index(IsUnique = true)]
         [Required]
         public string BusinessUnitName { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(50)]
+        [StringLength(50)]
         public string BusinessUnitDescription { get; set; }
 
-        [Column(TypeName = "varbinary")]
         public byte[] BusinessUnitImage { get; set; }
 
     }

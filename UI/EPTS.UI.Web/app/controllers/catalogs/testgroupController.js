@@ -66,24 +66,42 @@ app.controller('testgroupIndexController', function postController($scope, testg
     * Signalr client functions
     *
     ***************************************************************************/
-    testgroupHub.on("AddTestGroup", function (item) {
-        $scope.testgroups.unshift(item);
-        $scope.$apply(); // this is outside of angularjs, so need to apply
-    });
+    //testgroupHub.on("AddTestGroup", function (item) {
+    //    $scope.testgroups.unshift(item);
+    //    $scope.$apply(); // this is outside of angularjs, so need to apply
+    //});
 
-    testgroupHub.on("UpdateTestGroup", function (item) {
-        var index = db.searchIndex($scope.testgroups, "TestGroupId", item.TestGroupId);
-        $scope.testgroups[index].TestGroupName = item.TestGroupName;
-        $scope.$apply(); // this is outside of angularjs, so need to apply
-    });
+    //testgroupHub.on("UpdateTestGroup", function (item) {
+    //    var index = db.searchIndex($scope.testgroups, "TestGroupId", item.TestGroupId);
+    //    $scope.testgroups[index].TestGroupName = item.TestGroupName;
+    //    $scope.$apply(); // this is outside of angularjs, so need to apply
+    //});
 
-    testgroupHub.on("DeleteTestGroup", function (item) {
-        var index = db.searchIndex($scope.testgroups, "TestGroupId", item.TestGroupId);
-        $scope.testgroups.splice(index, 1);
-        $scope.$apply(); // this is outside of angularjs, so need to apply
-    });
+    //testgroupHub.on("DeleteTestGroup", function (item) {
+    //    var index = db.searchIndex($scope.testgroups, "TestGroupId", item.TestGroupId);
+    //    $scope.testgroups.splice(index, 1);
+    //    $scope.$apply(); // this is outside of angularjs, so need to apply
+    //});
 
-    connection.start();
+    //connection.start();
+    $scope.$on('TestPlanId_click', function (e, id) {
+        $scope.isCollapsed = $scope.isCollapsed === 0 ? true : false;
+        $scope.TestPlanId = id;
+        if ($scope.isCollapsed === false) {
+            testgroupFactory.GetTestGroupByTestPlanId(id)
+                .then(function (reponse) {
+                    $scope.testgroups = reponse.result;
+                    $scope.totalItems = $scope.testgroups.length;
+
+                }, function (error) {
+                    db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Loading Business Unit! ' + error.ExceptionInformation);
+                });
+        }
+    });
+    $scope.collapse = function (event, childScope, id) {
+        $(event.target).toggleClass("glyphicon-chevron-down");
+        childScope.$broadcast('TestGroupId_click', id);
+    };
 
     /***************************************************************************
     *
@@ -231,12 +249,12 @@ app.controller('testgroupIndexController', function postController($scope, testg
     $scope.TestGroupCancel = function (currenttestgroup) {
         $scope.GetTestGroup(currenttestgroup);
     }
-    var menu = $(".main-sidebar").find('.sidebar-menu').find('.treeview');
-    menu.removeClass('active');
-    var submenu = menu.find("a:contains('Familes')");
-    submenu.click();
-    $scope.GetTestGroups();
-    $scope.orderByField = 'TestGroupName';
+    //var menu = $(".main-sidebar").find('.sidebar-menu').find('.treeview');
+    //menu.removeClass('active');
+    //var submenu = menu.find("a:contains('Familes')");
+    //submenu.click();
+    //$scope.GetTestGroups();
+    $scope.orderByField = 'Sequence';
     $scope.reverseSort = false;
 });
 

@@ -14,17 +14,20 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Catalogs
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ModelDetailId { get; set; }
-        
+
         [ForeignKey("ModelId")]
-        
-        public virtual ICollection<Model> Model { get; set; }
+        public virtual Model Model { get; set; }
+
         [Required]
         public Guid ModelId { get; set; }
 
+
         [ForeignKey("PartNumberId")]
-        
-        public virtual ICollection<PartNumber> PartNumber { get; set; }
+        public virtual PartNumber PartNumber { get; set; }
+
         [Required]
         public Guid PartNumberId { get; set; }
+
+
     }
 }

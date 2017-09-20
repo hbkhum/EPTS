@@ -9,7 +9,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Repositories
 
 
 
-        public DataRepositories(BusinessUnitRepository businessUnitRepository, FamilyRepository familyRepository, FlowRepository flowRepository, LineRepository lineRepository, ModelRepository modelRepository, ModelDetailRepository modelDetailRepository, PartNumberRepository partNumberRepository, StationRepository stationRepository, TestGroupLinkRepository testGroupLinkRepository, TestGroupRepository testGroupRepository, TestLinkRepository testLinkRepository, TestPlanLinkRepository testPlanLinkRepository, TestRepository testRepository, TestPlanRepository testPlanRepository, TestTypeRepository testTypeRepository, TestUnitRepository testUnitRepository)
+        public DataRepositories(BusinessUnitRepository businessUnitRepository, FamilyRepository familyRepository, FlowRepository flowRepository, LineRepository lineRepository, ModelRepository modelRepository, ModelDetailRepository modelDetailRepository, PartNumberRepository partNumberRepository, StationRepository stationRepository, TestGroupLinkRepository testGroupLinkRepository, TestGroupRepository testGroupRepository,  TestPlanLinkRepository testPlanLinkRepository, TestRepository testRepository, TestPlanRepository testPlanRepository, TestTypeRepository testTypeRepository, TestUnitRepository testUnitRepository)
         {
             BusinessUnitRepository = businessUnitRepository;
             FamilyRepository = familyRepository;
@@ -21,7 +21,6 @@ namespace EPTS.Repositories.WebServices.WebAPI.Repositories
             StationRepository = stationRepository;
             TestGroupLinkRepository = testGroupLinkRepository;
             TestGroupRepository = testGroupRepository;
-            TestLinkRepository = testLinkRepository;
             TestPlanLinkRepository = testPlanLinkRepository;
             TestRepository = testRepository;
             TestPlanRepository = testPlanRepository;
@@ -40,7 +39,6 @@ namespace EPTS.Repositories.WebServices.WebAPI.Repositories
 
         public TestGroupLinkRepository TestGroupLinkRepository { get; set; }
         public TestGroupRepository TestGroupRepository { get; set; }
-        public TestLinkRepository TestLinkRepository { get; set; }
         public TestPlanLinkRepository TestPlanLinkRepository { get; set; }
         public TestPlanRepository TestPlanRepository { get; set; }
         public TestRepository TestRepository { get; set; }
@@ -61,7 +59,6 @@ namespace EPTS.Repositories.WebServices.WebAPI.Repositories
 
         TestGroupLinkRepository TestGroupLinkRepository { get; set; }
         TestGroupRepository TestGroupRepository { get; set; }
-        TestLinkRepository TestLinkRepository { get; set; }
         TestPlanLinkRepository TestPlanLinkRepository { get; set; }
         TestPlanRepository TestPlanRepository { get; set; }
         TestRepository TestRepository { get; set; }

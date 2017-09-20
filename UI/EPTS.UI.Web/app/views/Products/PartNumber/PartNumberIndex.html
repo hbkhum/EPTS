@@ -9,7 +9,7 @@
             <uib-accordion close-others="true" id="modeldetailaccordion">
                 <div uib-accordion-group class="panel-primary" ng-repeat="modeldetail in modeldetails" is-open="status.open">
                     <uib-accordion-heading>
-                            <i class="fa fa-university"></i>{{modeldetail.PartNumber.PartName}}
+                            <i class="fa fa-university"></i>{{modeldetail.PartNumber.PartNumberName}}
                             <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                     </uib-accordion-heading>
                     <div class="panel panel-default">
@@ -26,7 +26,7 @@
                                 <div class="col-xs-12 col-md-8">
                                     <h3>
                                         Part Number:
-                                        <small>{{modeldetail.PartNumber.PartName}}</small>
+                                        <small>{{modeldetail.PartNumber.PartNumberName}}</small>
                                         Description:
                                         <small>{{modeldetail.PartNumber.Description}}</small>
                                     </h3>

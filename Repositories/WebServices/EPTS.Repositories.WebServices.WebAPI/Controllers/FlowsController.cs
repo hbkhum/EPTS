@@ -27,6 +27,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
         [Route("{pageSize:int?}/{pageNumber:int?}/{orderby:alpha?}/{wherevalue:alpha?}/{type:alpha?}")]
         public async Task<IHttpActionResult> Get(int pageSize = 5000, int pageNumber = 1, string whereValue = "", string orderBy = "", string type = "json")
         {
+            whereValue = whereValue ?? "";
             var result = await _dataServices.FlowService.GetAllFlows(whereValue, orderBy);
             var data = result as IList<Flow> ?? result.ToList();
             var totalCount = data.Count();

@@ -10,9 +10,9 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Testing
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid TestUnitId { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(15)]
+        [StringLength(15)]
         [Required]
+        [Index(IsUnique = true)]
         public string TestUnitName { get; set; }
     }
 }

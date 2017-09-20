@@ -63,18 +63,25 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
             //}).ToList();
             return await Task.FromResult(result);
         }
-        public async Task<IEnumerable<PartNumber>> GetAllPartNumbersByModelId(Guid modelid)
+        public async Task<IEnumerable<ModelDetail>> GetAllPartNumbersByModelId(Guid modelid, string whereValue, string orderBy)
         {
-            var modeldetails = await _dataRepositories.ModelDetailRepository.GetAllAsync("ModelId=\"" + modelid+ "\"", "");
-            var partnumber = modeldetails.Select(c => c.PartNumberId);
-            var data= await _dataRepositories.PartNumberRepository.FindBy(c => partnumber.Contains(c.PartNumberId));
-            return data.Select(c => new PartNumber
+            var result = await _dataRepositories.ModelDetailRepository.GetAllAsync("ModelId=\"" + modelid+ "\" and " + whereValue , orderBy);
+            //var modeldetails = result as IList<ModelDetail> ?? result.ToList();
+            //var partnumber = modeldetails.Select(c => c.PartNumberId );
+            
+            //var data= await _dataRepositories.PartNumberRepository.FindBy(c => partnumber.Contains(c.PartNumberId));
+            return result.Select(c => new ModelDetail
             {
+                ModelDetailId = c.ModelDetailId,
                 PartNumberId = c.PartNumberId,
-                PartName = c.PartName,
-                Description = c.Description,
-                Revision = c.Revision,
-                Active = c.Active,
+                ModelId = modelid,
+                PartNumber = Task.Run(async () => await _dataRepositories.PartNumberRepository.GetById(c.PartNumberId)).Result,
+                //Model = c
+                //ModelDetailId = modeldetails[0].ModelDetailId,
+                //PartNumberName = c.PartNumberName,
+                //Description = c.Description,
+                //Revision = c.Revision,
+                //Active = c.Active,
                 //ModelDetail= Task.Run(async () => await _dataRepositories.ModelDetailRepository.GetAllAsync("ModelId=\"" + modelid + "\"", "")).Result
                 //ModelDetail = (ICollection<ModelDetail>) modeldetails,
             }).ToList();

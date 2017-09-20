@@ -7,13 +7,13 @@ namespace EPTS.Repositories.WebServices.WebAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class EPTSContext1 : IMigrationMetadata
+    public sealed partial class EPTSContext3 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(EPTSContext1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(EPTSContext3));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707060509253_EPTSContext1"; }
+            get { return "201709140304361_EPTSContext3"; }
         }
         
         string IMigrationMetadata.Source

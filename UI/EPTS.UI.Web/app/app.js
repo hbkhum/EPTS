@@ -1,5 +1,5 @@
 ﻿//var app = angular.module("app", ['ngRoute', 'angularMoment', /*'ngAnimate',*/ 'ui.bootstrap', 'angularUtils.directives.dirPagination', 'LocalStorageModule', 'angular-loading-bar']);
-var app = angular.module("app", ['ngRoute', 'angularMoment', /*'ngAnimate',*/ 'ui.bootstrap', 'angularUtils.directives.dirPagination', 'LocalStorageModule', 'angular-loading-bar', 'angularModalService'], function () {
+var app = angular.module("app", ['ngRoute', 'angularMoment',  'ui.bootstrap',  'LocalStorageModule', 'angular-loading-bar', 'angularModalService'], function () {
 
 });
 
@@ -42,10 +42,10 @@ app.config(function ($routeProvider) {
             controller: 'modelIndexController',
             templateUrl: 'app/views/catalogs/Model/ModelIndex.html'
         })
-		.when('/Product',
+		.when('/TestPlan',
         {
-            controller: 'productsController',
-            templateUrl: 'app/views/Products/index.html'
+            controller: 'testplanIndexController',
+            templateUrl: 'app/views/catalogs/TestPlan/TestPlanIndex.html'
         })
     .otherwise({ redirectTo: "/home" });
 });
@@ -182,6 +182,25 @@ app.directive('partnumber', function () {
     }
 });
 
+app.directive('testgroup', function () {
+    return {
+        controller: 'testgroupIndexController',
+        templateUrl: 'app/views/catalogs/TestGroup/TestGroupIndex.html',
+        scope: {
+            modelid: '='
+        }
+    }
+});
+
+app.directive('test', function () {
+    return {
+        controller: 'testIndexController',
+        templateUrl: 'app/views/catalogs/Test/TestIndex.html',
+        scope: {
+            modelid: '='
+        }
+    }
+});
 
 
 

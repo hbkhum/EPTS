@@ -232,7 +232,7 @@ app.controller('modeldetailIndexController', function postController($scope, mod
     //var submenu = menu.find("a:contains('Familes')");
     //submenu.click();
     //$scope.GetModelDetails();
-    //$scope.orderByField = 'PartNumber.PartName';
+    //$scope.orderByField = 'PartNumber.PartNumberName';
     //$scope.reverseSort = false;
 });
 

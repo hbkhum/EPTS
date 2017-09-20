@@ -14,21 +14,18 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Catalogs
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid PartNumberId { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(30)]
+        [StringLength(30)]
+        [Index(IsUnique = true)]
         [Required]
-        public string PartName { get; set; }
+        public string PartNumberName { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(30)]
+        [StringLength(30)]
         [Required]
         public string Description { get; set; }
 
-        [Column(TypeName = "bit")]
         [Required]
         public bool Revision { get; set; }
 
-        [Column(TypeName ="bit")]
         [Required]
         public bool Active { get; set; }
 

@@ -39,12 +39,6 @@ app.controller('modelDeleteController', function ($scope, item, close) {
 /*****************************************************************************************/
 /******                                 CONTROLLER                                  ******/
 /*****************************************************************************************/
-app.controller('modelPaginationController', function ($scope) {
-    $scope.pageChangeHandler = function (num) {
-        console.log('going to page ' + num);
-    };
-});
-
 
 app.controller('modelIndexController', function postController($scope, modelFactory, ModalService, db) {
     var connection = $.hubConnection("http://humbertopedraza.dynu.com/epts/WebAPI/signalr");
@@ -52,12 +46,14 @@ app.controller('modelIndexController', function postController($scope, modelFact
     $scope.models = [];
     $scope.model = {};
     $scope.model_editmode = false;
+
+    $scope.reverseSort = false;
     $scope.currentPage = 1;
     $scope.pageSize = 10;
-    $scope.pageChangeHandler = function (num) {
-        console.log('meals page changed to ' + num);
-    };
-
+    $scope.orderByField = "ModelName";
+    $scope.search = {};
+    $scope.search.FamilyName = "";
+    $scope.search.ModelName = "";
 
     /***************************************************************************
     *
@@ -88,6 +84,14 @@ app.controller('modelIndexController', function postController($scope, modelFact
         childScope.$broadcast('ModelId_click', id);
     };
 
+    $scope.pageChanged = function () {
+        $scope.GetModels();
+    };
+
+    $scope.Change = function () {
+        $scope.pageFilter = "ModelName.Contains(\"" + $scope.search.ModelName + "\") and Family.FamilyName.Contains(\"" + $scope.search.FamilyName + "\")";
+        $scope.GetModels();
+    }
     /***************************************************************************
     *
     * CRUD 
@@ -106,10 +110,15 @@ app.controller('modelIndexController', function postController($scope, modelFact
 
     //get all model
     $scope.GetModels = function () {
-        modelFactory.GetModels()
+        var orderbyfield = $scope.orderByField;
+        if ($scope.reverseSort === true) {
+            orderbyfield = $scope.orderByField + " Desc";
+        }
+        modelFactory.GetModels($scope.pageSize, $scope.currentPage, orderbyfield, $scope.pageFilter)
             .then(function (reponse) {
                 $scope.models = reponse.result;
-                $scope.totalItems = $scope.models.length;
+                $scope.totalItems = reponse.TotalCount;
+                $scope.noOfPages = Math.ceil($scope.totalItems / $scope.pageSize);
             }, function (error) {
                 db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Loading Business Unit! ' + error.ExceptionInformation);
             });
@@ -236,13 +245,14 @@ app.controller('modelIndexController', function postController($scope, modelFact
         $scope.model = {};
         //$scope.GetModel(currentmodel);
     }
+
     var menu = $(".main-sidebar").find('.sidebar-menu').find('.treeview');
     menu.removeClass('active');
     var submenu = menu.find("a:contains('Models')");
     submenu.click();
+    
     $scope.GetModels();
-    $scope.orderByField = 'ModelName';
-    $scope.reverseSort = false;
+    
 });
 
 

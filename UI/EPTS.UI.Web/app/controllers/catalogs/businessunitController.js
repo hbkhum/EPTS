@@ -34,12 +34,14 @@ app.controller('businessunitIndexController', function postController($scope, bu
     var businessunitHub = connection.createHubProxy('BusinessUnitHub');
     $scope.businessunits = [];
     $scope.businessunit_editmode = false;
+
+    $scope.reverseSort = false;
     $scope.currentPage = 1;
     $scope.pageSize = 10;
-
-    $scope.pageChangeHandler = function (num) {
-        console.log('meals page changed to ' + num);
-    };
+    $scope.orderByField = "BusinessUnitName";
+    $scope.search = {};
+    $scope.search.BusinessUnitDescription = "";
+    $scope.search.BusinessUnitName = "";
 
 
     /***************************************************************************
@@ -66,6 +68,15 @@ app.controller('businessunitIndexController', function postController($scope, bu
 
     connection.start();
 
+    $scope.pageChanged = function () {
+        $scope.GetBusinessUnits();
+    };
+
+    $scope.Change = function () {
+        $scope.pageFilter = "BusinessUnitName.Contains(\"" + $scope.search.BusinessUnitName + "\") and BusinessUnitDescription.Contains(\"" + $scope.search.BusinessUnitDescription + "\")";
+        $scope.GetBusinessUnits();
+    }
+
     /***************************************************************************
     *
     * CRUD 
@@ -84,10 +95,15 @@ app.controller('businessunitIndexController', function postController($scope, bu
 
     //get all businessunit
     $scope.GetBusinessUnits = function () {
-        businessunitFactory.GetBusinessUnits()
+        var orderbyfield = $scope.orderByField;
+        if ($scope.reverseSort === true) {
+            orderbyfield = $scope.orderByField + " Desc";
+        }
+        businessunitFactory.GetBusinessUnits($scope.pageSize, $scope.currentPage, orderbyfield, $scope.pageFilter)
             .then(function(reponse) {
                 $scope.businessunits = reponse.result;
-                $scope.totalItems = $scope.businessunits.length;
+                $scope.totalItems = reponse.TotalCount;
+                $scope.noOfPages = Math.ceil($scope.totalItems / $scope.pageSize);
             }, function (error) {
                 db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Loading Business Unit! ' + error.ExceptionInformation);
             });
@@ -223,7 +239,5 @@ app.controller('businessunitIndexController', function postController($scope, bu
     var submenu = menu.find("a:contains('Business Unit')");
     submenu.click();
     $scope.GetBusinessUnits();
-    $scope.orderByField = 'BusinessUnitName';
-    $scope.reverseSort = false;
 });
 

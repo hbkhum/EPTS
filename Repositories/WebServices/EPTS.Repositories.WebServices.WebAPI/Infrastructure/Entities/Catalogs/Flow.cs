@@ -11,18 +11,19 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Catalogs
         public Guid FlowId { get; set; }
 
         [ForeignKey("ModelId")]
-        [Required]
         public Model Model { get; set; }
+
+        [Required]
         public Guid ModelId { get; set; }
 
-
         [ForeignKey("LineId")]
-        [Required]
         public Line Line { get; set; }
+
+        [Required]
         public Guid LineId { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(15)]
+        [StringLength(15)]
+        [Index(IsUnique = true)]
         [Required]
         public string FlowName { get; set; }
 

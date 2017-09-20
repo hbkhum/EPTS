@@ -31,7 +31,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Context
         public DbSet<Test> Test { get; set; }
         public DbSet<TestGroup> TestGroup { get; set; }
         public DbSet<TestGroupLink> TestGroupLink { get; set; }
-        public DbSet<TestLink> TestLink { get; set; }
+        //public DbSet<TestLink> TestLink { get; set; }
         public DbSet<TestPlan> TestPlan { get; set; }
         public DbSet<TestPlanLink> TestPlanLink { get; set; }
         public DbSet<TestType> TestType { get; set; }
@@ -42,6 +42,10 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Context
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
             //base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<Student>()
+            //.HasOptional<Standard>(s => s.Standard)
+            //.WithMany()
+            //.WillCascadeOnDelete(false);
         }
     }
 }

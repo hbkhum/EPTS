@@ -28,6 +28,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
 
         public async Task<IHttpActionResult> Get(int pageSize = 5000, int pageNumber = 1, string whereValue = "", string orderBy = "", string type = "json")
         {
+            whereValue = whereValue ?? "";
             var result = await _dataServices.LineService.GetAllLines(whereValue, orderBy);
             var data = result as IList<Line> ?? result.ToList();
             var totalCount = data.Count();

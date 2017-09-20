@@ -13,7 +13,7 @@ app.controller('partnumberAddEditController', function ($scope, items, addEdit, 
 });
 
 app.controller('partnumberDeleteController', function ($scope, item, close) {
-    $scope.partnumber = item;
+    $scope.modeldetail = item;
     $scope.close = function (result) {
         close(result, 500);
     };
@@ -22,26 +22,21 @@ app.controller('partnumberDeleteController', function ($scope, item, close) {
 /*****************************************************************************************/
 /******                                 CONTROLLER                                  ******/
 /*****************************************************************************************/
-app.controller('partnumberPaginationController', function ($scope) {
-    $scope.pageChangeHandler = function (num) {
-        console.log('going to page ' + num);
-    };
-});
-
-
 
 app.controller('partnumberIndexController', function postController($scope, partnumberFactory, ModalService, db) {
     //var connection = $.hubConnection("http://humbertopedraza.dynu.com/epts/WebAPI/signalr");
     //var partnumberHub = connection.createHubProxy('PartNumberHub');
-    $scope.partnumbers = [];
+    $scope.modeldetails = [];
     $scope.partnumber_editmode = false;
+
+    $scope.reverseSort = false;
     $scope.currentPage = 1;
-    $scope.pageSize = 10;
-
-    $scope.pageChangeHandler = function (num) {
-        console.log('meals page changed to ' + num);
-    };
-
+    $scope.pageSize = 5;
+    $scope.orderByField = "PartNumber.PartNumberName";
+    $scope.search = {};
+    $scope.search.Description = "";
+    $scope.search.PartNumberName = "";
+    $scope.pageFilter = "PartNumber.PartNumberName.Contains(\"" + $scope.search.PartNumberName + "\") and PartNumber.Description.Contains(\"" + $scope.search.Description + "\")";
 
     /***************************************************************************
     *
@@ -49,19 +44,19 @@ app.controller('partnumberIndexController', function postController($scope, part
     *
     ***************************************************************************/
     //partnumberHub.on("AddPartNumber", function (item) {
-    //    $scope.partnumbers.unshift(item);
+    //    $scope.modeldetails.unshift(item);
     //    $scope.$apply(); // this is outside of angularjs, so need to apply
     //});
 
     //partnumberHub.on("UpdatePartNumber", function (item) {
-    //    var index = db.searchIndex($scope.partnumbers, "PartNumberId", item.PartNumberId);
-    //    $scope.partnumbers[index].PartNumberName = item.PartNumberName;
+    //    var index = db.searchIndex($scope.modeldetails, "PartNumberId", item.PartNumberId);
+    //    $scope.modeldetails[index].PartNumberName = item.PartNumberName;
     //    $scope.$apply(); // this is outside of angularjs, so need to apply
     //});
 
     //partnumberHub.on("DeletePartNumber", function (item) {
-    //    var index = db.searchIndex($scope.partnumbers, "PartNumberId", item.PartNumberId);
-    //    $scope.partnumbers.splice(index, 1);
+    //    var index = db.searchIndex($scope.modeldetails, "PartNumberId", item.PartNumberId);
+    //    $scope.modeldetails.splice(index, 1);
     //    $scope.$apply(); // this is outside of angularjs, so need to apply
     //});
 
@@ -70,17 +65,17 @@ app.controller('partnumberIndexController', function postController($scope, part
     $scope.$on('ModelId_click', function (e, id) {
         $scope.isCollapsed = $scope.isCollapsed === 0 ? true : false;
         $scope.ModelId = id;
-        if ($scope.isCollapsed === false) {
-            partnumberFactory.GetPartNumberByModelId(id)
-                .then(function (reponse) {
-                    $scope.partnumbers = reponse.result;
-                    $scope.totalItems = $scope.modeldetails.length;
-                    
-                }, function (error) {
-                    db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Loading Business Unit! ' + error.ExceptionInformation);
-                });
-        }
+        $scope.GetPartNumbers($scope.ModelId);
     });
+
+    $scope.pageChanged = function () {
+        $scope.GetPartNumbers($scope.ModelId);
+    };
+
+    $scope.Change = function () {
+        $scope.pageFilter = "PartNumber.PartNumberName.Contains(\"" + $scope.search.PartNumberName + "\") and PartNumber.Description.Contains(\"" + $scope.search.Description + "\")";
+        $scope.GetPartNumbers($scope.ModelId);
+    }
 
     /***************************************************************************
     *
@@ -99,24 +94,47 @@ app.controller('partnumberIndexController', function postController($scope, part
     };
 
     //get all partnumber
-    $scope.GetPartNumbers = function () {
-        partnumberFactory.GetPartNumbers()
-            .then(function (reponse) {
-                $scope.modeldetails = reponse.result;
-                $scope.totalItems = $scope.modeldetails.length;
-            }, function (error) {
-                db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Loading Business Unit! ' + error.ExceptionInformation);
-            });
+    $scope.GetPartNumbers = function (id) {
+        //partnumberFactory.GetPartNumbers()
+        //    .then(function (reponse) {
+        //        $scope.modeldetails = reponse.result;
+        //        $scope.totalItems = $scope.modeldetails.length;
+        //    }, function (error) {
+        //        db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Loading Business Unit! ' + error.ExceptionInformation);
+        //    });
+        var orderbyfield = $scope.orderByField;
+        if ($scope.reverseSort === true) {
+            orderbyfield = $scope.orderByField + " Desc";
+        }
+        if ($scope.isCollapsed === false) {
+            partnumberFactory.GetPartNumberByModelId(id, $scope.pageSize, $scope.currentPage, orderbyfield, $scope.pageFilter)
+                .then(function (reponse) {
+                    $scope.modeldetails = reponse.result;
+                    $scope.totalItems = reponse.TotalCount;
+                    $scope.noOfPages = Math.ceil($scope.totalItems / $scope.pageSize);
+                }, function (error) {
+                    db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Loading Business Unit! ' + error.ExceptionInformation);
+                });
+        }
     };
 
     // add partnumber
     $scope.AddPartNumber = function (currentPartNumber) {
         if (currentPartNumber != null) {
-            partnumberFactory.AddPartNumber(currentPartNumber, $scope.ModelId)
-                .then(function (reponse) {
-                    currentPartNumber.PartNumberId = reponse;
-                    $scope.partnumbers.unshift(currentPartNumber);
-                    $scope.partnumber = {};
+            partnumberFactory.AddPartNumber(currentPartNumber)
+                .then(function (partnumberid) {
+                    currentPartNumber.PartNumberId = partnumberid;
+                    partnumberFactory.AddPartNumberByModel(partnumberid, $scope.ModelId)
+                        .then(function (reponse) {
+                            //angular.copy(currentPartNumber, reponse.PartNumber);
+                            reponse.PartNumber = currentPartNumber;
+                            $scope.modeldetails.unshift(reponse);
+                            $scope.partnumber = {};
+                        }, function (error) {
+                            db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Adding partnumber! ' + error.ExceptionInformation);
+                        });
+                    //currentPartNumber.PartNumberId = reponse;
+
                     db.InformationMessageSuccess('<i class="fa fa-check-square-o fa-3x" aria-hidden="true"></i> <strong>Success!</strong> partnumber ' + currentPartNumber.PartNumberId + ' has been added.');
                 }, function (error) {
                     db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Adding partnumber! ' + error.ExceptionInformation);
@@ -138,12 +156,21 @@ app.controller('partnumberIndexController', function postController($scope, part
     };
 
     // delete partnumber
-    $scope.DeletePartNumber = function (currentPartNumber) {
-        partnumberFactory.DeletePartNumber(currentPartNumber)
+    $scope.DeletePartNumber = function (currentModelDetail) {
+        partnumberFactory.DeletePartNumberByModel(currentModelDetail)
             .then(function (reponse) {
-                var index = db.searchIndex($scope.partnumbers, "PartNumberId", currentPartNumber.PartNumberId);
-                $scope.partnumbers.splice(index, 1);
-                db.InformationMessageWarning('<i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i> partnumber ' + currentPartNumber.PartNumberId + ' has been deleted.');
+                if (reponse === true) {
+                    partnumberFactory.DeletePartNumber(currentModelDetail)
+                        .then(function (reponse) {
+                            var index = db.searchIndex($scope.modeldetails, "PartNumberId", currentModelDetail.PartNumberId);
+                            $scope.modeldetails.splice(index, 1);
+                            db.InformationMessageWarning('<i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i> partnumber ' + currentModelDetail.PartNumberId + ' has been deleted.');
+                        }, function (error) {
+                            db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Deleting partnumber! ' + error.ExceptionInformation);
+                        });
+                }
+
+
             }, function (error) {
                 db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Deleting partnumber! ' + error.ExceptionInformation);
             });
@@ -206,12 +233,12 @@ app.controller('partnumberIndexController', function postController($scope, part
         });
     };
 
-    $scope.PartNumberShowConfirm = function (currentpartnumber) {
+    $scope.PartNumberShowConfirm = function (currentmodeldetail) {
         ModalService.showModal({
             templateUrl: "app/views/Catalogs/PartNumber/PartNumberDelete.html",
             controller: "partnumberDeleteController",
             inputs: {
-                item: currentpartnumber
+                item: currentmodeldetail
             }
         }).then(function (modal) {
             modal.element.modal({
@@ -221,7 +248,7 @@ app.controller('partnumberIndexController', function postController($scope, part
             modal.element.modal();
             modal.close.then(function (result) {
                 if (result === true) {
-                    $scope.DeletePartNumber(modal.scope.partnumber);
+                    $scope.DeletePartNumber(modal.scope.modeldetail);
                 }
             });
         });
@@ -234,9 +261,7 @@ app.controller('partnumberIndexController', function postController($scope, part
     //menu.removeClass('active');
     //var submenu = menu.find("a:contains('Familes')");
     //submenu.click();
-    $scope.GetPartNumbers();
-    $scope.orderByField = 'PartName';
-    $scope.reverseSort = false;
+    //$scope.GetPartNumbers();
 });
 
 

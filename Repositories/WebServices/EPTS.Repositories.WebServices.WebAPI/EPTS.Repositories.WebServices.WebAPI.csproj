@@ -237,7 +237,6 @@
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TestGroupController.cs" />
     <Compile Include="Controllers\TestGroupLinkController.cs" />
-    <Compile Include="Controllers\TestLinkController.cs" />
     <Compile Include="Controllers\TestPlanController.cs" />
     <Compile Include="Controllers\TestPlanLinkController.cs" />
     <Compile Include="Controllers\TestTypeController.cs" />
@@ -262,7 +261,6 @@
     <Compile Include="Infrastructure\Entities\Testing\Test.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestGroup.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestGroupLink.cs" />
-    <Compile Include="Infrastructure\Entities\Testing\TestLink.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestPlan.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestPlanLink.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestType.cs" />
@@ -277,31 +275,26 @@
     <Compile Include="Infrastructure\Interfaces\IStationRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestGroupLinkRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestGroupRepository.cs" />
-    <Compile Include="Infrastructure\Interfaces\ITestLinkRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestPlanLinkRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestPlanRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestTypeRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestUnitRepository.cs" />
-    <Compile Include="Migrations\201707051524385_EPTSContext.cs" />
-    <Compile Include="Migrations\201707051524385_EPTSContext.Designer.cs">
-      <DependentUpon>201707051524385_EPTSContext.cs</DependentUpon>
+    <Compile Include="Migrations\201709121546355_EPTSContext.cs" />
+    <Compile Include="Migrations\201709121546355_EPTSContext.Designer.cs">
+      <DependentUpon>201709121546355_EPTSContext.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707060509253_EPTSContext1.cs" />
-    <Compile Include="Migrations\201707060509253_EPTSContext1.Designer.cs">
-      <DependentUpon>201707060509253_EPTSContext1.cs</DependentUpon>
+    <Compile Include="Migrations\201709131213188_EPTSContext1.cs" />
+    <Compile Include="Migrations\201709131213188_EPTSContext1.Designer.cs">
+      <DependentUpon>201709131213188_EPTSContext1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707081515557_EPTSContext2.cs" />
-    <Compile Include="Migrations\201707081515557_EPTSContext2.Designer.cs">
-      <DependentUpon>201707081515557_EPTSContext2.cs</DependentUpon>
+    <Compile Include="Migrations\201709140258353_EPTSContext2.cs" />
+    <Compile Include="Migrations\201709140258353_EPTSContext2.Designer.cs">
+      <DependentUpon>201709140258353_EPTSContext2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707100012171_EPTSContext3.cs" />
-    <Compile Include="Migrations\201707100012171_EPTSContext3.Designer.cs">
-      <DependentUpon>201707100012171_EPTSContext3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707100014187_EPTSContext4.cs" />
-    <Compile Include="Migrations\201707100014187_EPTSContext4.Designer.cs">
-      <DependentUpon>201707100014187_EPTSContext4.cs</DependentUpon>
+    <Compile Include="Migrations\201709140304361_EPTSContext3.cs" />
+    <Compile Include="Migrations\201709140304361_EPTSContext3.Designer.cs">
+      <DependentUpon>201709140304361_EPTSContext3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -316,7 +309,6 @@
     <Compile Include="Repositories\StationRepository.cs" />
     <Compile Include="Repositories\TestGroupLinkRepository.cs" />
     <Compile Include="Repositories\TestGroupRepository.cs" />
-    <Compile Include="Repositories\TestLinkRepository.cs" />
     <Compile Include="Repositories\TestPlanLinkRepository.cs" />
     <Compile Include="Repositories\TestPlanRepository.cs" />
     <Compile Include="Repositories\TestRepository.cs" />
@@ -336,7 +328,6 @@
     <Compile Include="Services\Interfaces\IStationService.cs" />
     <Compile Include="Services\Interfaces\ITestGroupLinkService.cs" />
     <Compile Include="Services\Interfaces\ITestGroupService.cs" />
-    <Compile Include="Services\Interfaces\ITestLinkService.cs" />
     <Compile Include="Services\Interfaces\ITestPlanLinkService.cs" />
     <Compile Include="Services\Interfaces\ITestPlanService.cs" />
     <Compile Include="Services\Interfaces\ITestService.cs" />
@@ -349,7 +340,6 @@
     <Compile Include="Services\StationService.cs" />
     <Compile Include="Services\TestGroupLinkService.cs" />
     <Compile Include="Services\TestGroupService.cs" />
-    <Compile Include="Services\TestLinkService.cs" />
     <Compile Include="Services\TestPlanLinkService.cs" />
     <Compile Include="Services\TestPlanService.cs" />
     <Compile Include="Services\TestService.cs" />
@@ -358,20 +348,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707051524385_EPTSContext.resx">
-      <DependentUpon>201707051524385_EPTSContext.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709121546355_EPTSContext.resx">
+      <DependentUpon>201709121546355_EPTSContext.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707060509253_EPTSContext1.resx">
-      <DependentUpon>201707060509253_EPTSContext1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709131213188_EPTSContext1.resx">
+      <DependentUpon>201709131213188_EPTSContext1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707081515557_EPTSContext2.resx">
-      <DependentUpon>201707081515557_EPTSContext2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709140258353_EPTSContext2.resx">
+      <DependentUpon>201709140258353_EPTSContext2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707100012171_EPTSContext3.resx">
-      <DependentUpon>201707100012171_EPTSContext3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707100014187_EPTSContext4.resx">
-      <DependentUpon>201707100014187_EPTSContext4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709140304361_EPTSContext3.resx">
+      <DependentUpon>201709140304361_EPTSContext3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -389,7 +376,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>24330</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:24330/</IISUrl>
+          <IISUrl>http://localhost:24331/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

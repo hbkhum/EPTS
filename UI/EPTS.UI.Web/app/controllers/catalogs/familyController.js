@@ -41,25 +41,21 @@ app.controller('familyDeleteController', function ($scope, item, close) {
 /*****************************************************************************************/
 /******                                 CONTROLLER                                  ******/
 /*****************************************************************************************/
-app.controller('familyPaginationController', function ($scope) {
-    $scope.pageChangeHandler = function (num) {
-        console.log('going to page ' + num);
-    };
-});
-
-
 app.controller('familyIndexController', function postController($scope, familyFactory, ModalService, db) {
     var connection = $.hubConnection("http://humbertopedraza.dynu.com/epts/WebAPI/signalr");
     var familyHub = connection.createHubProxy('FamilyHub');
     $scope.families = [];
     $scope.family = {};
     $scope.family_editmode = false;
+
+    $scope.reverseSort = false;
     $scope.currentPage = 1;
     $scope.pageSize = 10;
-
-    $scope.pageChangeHandler = function (num) {
-        console.log('meals page changed to ' + num);
-    };
+    $scope.orderByField = "FamilyName";
+    $scope.search = {};
+    $scope.search.FamilyName = "";
+    $scope.search.BusinessUnit = {};
+    $scope.search.BusinessUnit.BusinessUnitName = "";
 
 
     /***************************************************************************
@@ -86,6 +82,15 @@ app.controller('familyIndexController', function postController($scope, familyFa
 
     connection.start();
 
+    $scope.pageChanged = function () {
+        $scope.GetFamilies();
+    };
+
+    $scope.Change = function () {
+        $scope.pageFilter = "FamilyName.Contains(\"" + $scope.search.FamilyName + "\") and BusinessUnit.BusinessUnitName.Contains(\"" + $scope.search.BusinessUnit.BusinessUnitName + "\")";
+        $scope.GetFamilies();
+    }
+
     /***************************************************************************
     *
     * CRUD 
@@ -104,10 +109,15 @@ app.controller('familyIndexController', function postController($scope, familyFa
 
     //get all family
     $scope.GetFamilies = function () {
-        familyFactory.GetFamilies()
+        var orderbyfield = $scope.orderByField;
+        if ($scope.reverseSort === true) {
+            orderbyfield = $scope.orderByField + " Desc";
+        }
+        familyFactory.GetFamilies($scope.pageSize, $scope.currentPage, orderbyfield, $scope.pageFilter)
             .then(function (reponse) {
                 $scope.families = reponse.result;
-                $scope.totalItems = $scope.families.length;
+                $scope.totalItems = reponse.TotalCount;
+                $scope.noOfPages = Math.ceil($scope.totalItems / $scope.pageSize);
             }, function (error) {
                 db.InformationMessageDanger('<i class="fa fa-times fa-3x" aria-hidden="true"></i> An Error has occured while Loading Business Unit! ' + error.ExceptionInformation);
             });
@@ -240,8 +250,6 @@ app.controller('familyIndexController', function postController($scope, familyFa
     var submenu = menu.find("a:contains('Families')");
     submenu.click();
     $scope.GetFamilies();
-    $scope.orderByField = 'FamilyName';
-    $scope.reverseSort = false;
 });
 
 

@@ -1,14 +1,4 @@
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>
-        Tests
-        <small>Control panels</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Catalogs</a></li>
-        <li class="active"><i class="fa fa-share-alt"></i> Tests</li>
-    </ol>
-</section>
 <!-- Main content -->
 <section class="content">
     <!-- Main row -->
@@ -45,31 +35,95 @@
                                                     <th>
                                                         <div class="rows">
                                                             <a href="" ng-click="orderByField='TestName'; reverseSort = !reverseSort">
-                                                                Test
+                                                                Test Name
                                                                 <span ng-show="orderByField == 'TestName'">
                                                                     <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
                                                                                      'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span></span>
                                                             </a>
                                                         </div>
                                                         <div class="input-group">
-                                                            <input ng-model="search.TestName" id="search" class="form-control input-sm" placeholder="Test text">
+                                                            <input ng-model="search.TestName" id="search" class="form-control input-sm" placeholder="Test Name text">
                                                             <span class="input-group-addon"><i class="fa  fa-search"></i></span>
                                                         </div>
                                                     </th>
-                                                    <th>
-                                                        <div  class="rows">
-                                                            <a href="" ng-click="orderByField='BusinessUnit.BusinessUnitName'; reverseSort = !reverseSort">
-                                                                Business Unit
-                                                                <span ng-show="orderByField == 'BusinessUnit.BusinessUnitName'">
+                                                    <!--<th>
+                                                        <div class="rows">
+                                                            <a href="" ng-click="orderByField='TestDesciption'; reverseSort = !reverseSort">
+                                                                Test Desciption
+                                                                <span ng-show="orderByField == 'TestDesciption'">
                                                                     <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
                                                                                      'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span></span>
                                                             </a>
                                                         </div>
-                                                        <div  class="input-group">
-                                                            <input ng-model="search.BusinessUnit.BusinessUnitName" id="search" class="form-control input-sm" placeholder="Business Unit text">
+                                                        <div class="input-group">
+                                                            <input ng-model="search.TestDesciption" id="search" class="form-control input-sm" placeholder="Test Desciption text">
+                                                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                                        </div>
+                                                    </th>-->
+                                                    <th>
+                                                        <div class="rows">
+                                                            <a href="" ng-click="orderByField='LoLimit'; reverseSort = !reverseSort">
+                                                                Lo Limit
+                                                                <span ng-show="orderByField == 'LoLimit'">
+                                                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <input ng-model="search.LoLimit" id="search" class="form-control input-sm" placeholder="Low Limit text">
                                                             <span class="input-group-addon"><i class="fa  fa-search"></i></span>
                                                         </div>
                                                     </th>
+
+                                                    <th>
+                                                        <div class="rows">
+                                                            <a href="" ng-click="orderByField='TestType.TestTypeName'; reverseSort = !reverseSort">
+                                                                Type Name
+                                                                <span ng-show="orderByField == 'TestType.TestTypeName'">
+                                                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <input ng-model="TestType.TestTypeName" id="search" class="form-control input-sm" placeholder="Type Name text">
+                                                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                                        </div>
+                                                    </th>
+
+                                                    <th>
+                                                        <div class="rows">
+                                                            <a href="" ng-click="orderByField='HiLimit'; reverseSort = !reverseSort">
+                                                                Hi Limit
+                                                                <span ng-show="orderByField == 'HiLimit'">
+                                                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <input ng-model="search.HiLimit" id="search" class="form-control input-sm" placeholder="High Limit text">
+                                                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                                        </div>
+                                                    </th>
+
+                                                    <th>
+                                                        <div class="rows">
+                                                            <a href="" ng-click="orderByField='TestUnit.TestUnitName'; reverseSort = !reverseSort">
+                                                                Type Name
+                                                                <span ng-show="orderByField == 'TestUnit.TestUnitName'">
+                                                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <input ng-model="TestType.TestTypeName" id="search" class="form-control input-sm" placeholder="Test Unit Name text">
+                                                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                                        </div>
+                                                    </th>
+
                                                     <th>
                                                         <div class="rows">
                                                             <div class="text-center">
@@ -92,9 +146,22 @@
                                                     <td>
                                                         {{test.TestName}}
                                                     </td>
+                                                    <!--<td>
+                                                        {{test.TestDesciption}}
+                                                    </td>-->
                                                     <td>
-                                                        {{test.BusinessUnit.BusinessUnitName}}
+                                                        {{test.LoLimit}}
                                                     </td>
+                                                    <td>
+                                                        {{test.TestType.TestTypeName}}
+                                                    </td>
+                                                    <td>
+                                                        {{test.HiLimit}}
+                                                    </td>
+                                                    <td>
+                                                        {{test.TestUnit.TestUnitName}}
+                                                    </td>
+
                                                     <td>
                                                         <div class="text-center">
 

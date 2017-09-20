@@ -10,17 +10,16 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Testing
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid TestPlanLinkId { get; set; }
 
-
-        [ForeignKey("TestGroupId")]
-        [Required]
-        public virtual TestGroup TestGroup { get; set; }
-        public Guid TestGroupId { get; set; }
-
-
         [ForeignKey("TestPlanId")]
-        [Required]
         public virtual TestPlan TestPlan { get; set; }
+
+        [Required]
         public Guid TestPlanId { get; set; }
 
+        [ForeignKey("TestGroupId")]
+        public virtual TestGroup TestGroup { get; set; }
+
+        [Required]
+        public Guid TestGroupId { get; set; }
     }
 }

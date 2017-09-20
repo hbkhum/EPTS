@@ -15,13 +15,12 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Catalogs
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid FamilyId { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(30)]
+        [StringLength(30)]
+        [Index(IsUnique = true)]
         [Required]
         public string FamilyName { get; set; }
 
         [ForeignKey("BusinessUnitId")]
-        
         public virtual BusinessUnit BusinessUnit { get; set; }
         [Required]
         public Guid BusinessUnitId { get; set; }

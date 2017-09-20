@@ -44,15 +44,15 @@
                                                     </th>
                                                     <th>
                                                         <div class="rows">
-                                                            <a href="" ng-click="orderByField='modeldetail.PartName'; reverseSort = !reverseSort">
+                                                            <a href="" ng-click="orderByField='modeldetail.PartNumberName'; reverseSort = !reverseSort">
                                                                 Part Number
-                                                                <span ng-show="orderByField == 'PartName'">
+                                                                <span ng-show="orderByField == 'PartNumberName'">
                                                                     <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
                                                                                      'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span></span>
                                                             </a>
                                                         </div>
                                                         <div class="input-group">
-                                                            <input ng-model="search.PartName" id="search" class="form-control input-sm" placeholder="Part Number text">
+                                                            <input ng-model="search.PartNumberName" id="search" class="form-control input-sm" placeholder="Part Number text">
                                                             <span class="input-group-addon"><i class="fa  fa-search"></i></span>
                                                         </div>
                                                     </th>
@@ -112,7 +112,7 @@
 
                                                     </th>
                                                     <td>
-                                                        {{partNumber.PartName}}
+                                                        {{partNumber.PartNumberName}}
                                                     </td>
                                                     <td>
                                                         {{partNumber.Description}}

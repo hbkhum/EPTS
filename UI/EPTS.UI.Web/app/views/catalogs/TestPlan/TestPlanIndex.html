@@ -1,12 +1,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        TestPlans
+        Test Plans
         <small>Control panels</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Catalogs</a></li>
-        <li class="active"><i class="fa fa-share-alt"></i> TestPlans</li>
+        <li class="active"><i class="fa fa-share-alt"></i> Test Plans</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -17,7 +17,7 @@
             <div class="box">
                 <div class="box-header">
                     <!--<h1>
-                        <i class="fa fa-share-alt"></i> TestPlan
+                        <i class="fa fa-share-alt"></i> Test Plan
                     </h1>-->
                 </div>
                 <!-- /.box-header -->
@@ -26,7 +26,7 @@
                         <div class="col-xs-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-share-alt"></i> TestPlans List
+                                    <h3 class="panel-title"><i class="fa fa-share-alt"></i> Test Plans List
                                     </h3>
                                 </div>
 
@@ -45,28 +45,14 @@
                                                     <th>
                                                         <div class="rows">
                                                             <a href="" ng-click="orderByField='TestPlanName'; reverseSort = !reverseSort">
-                                                                TestPlan
+                                                                Test Plan
                                                                 <span ng-show="orderByField == 'TestPlanName'">
                                                                     <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
                                                                                      'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span></span>
                                                             </a>
                                                         </div>
                                                         <div class="input-group">
-                                                            <input ng-model="search.TestPlanName" id="search" class="form-control input-sm" placeholder="TestPlan text">
-                                                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
-                                                        </div>
-                                                    </th>
-                                                    <th>
-                                                        <div  class="rows">
-                                                            <a href="" ng-click="orderByField='BusinessUnit.BusinessUnitName'; reverseSort = !reverseSort">
-                                                                Business Unit
-                                                                <span ng-show="orderByField == 'BusinessUnit.BusinessUnitName'">
-                                                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
-                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span></span>
-                                                            </a>
-                                                        </div>
-                                                        <div  class="input-group">
-                                                            <input ng-model="search.BusinessUnit.BusinessUnitName" id="search" class="form-control input-sm" placeholder="Business Unit text">
+                                                            <input ng-model="search.TestPlanName" id="search" class="form-control input-sm" placeholder="Test Plan text">
                                                             <span class="input-group-addon"><i class="fa  fa-search"></i></span>
                                                         </div>
                                                     </th>
@@ -81,35 +67,42 @@
                                                     </th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr dir-paginate="testplan in testplans | filter:search | filter:q| itemsPerPage: pageSize |orderBy:orderByField:reverseSort" current-page="currentPage">
-                                                    <th scope="row">
-                                                        <span class="pull-left-container">
+                                            <tbody dir-paginate="testplan in testplans | filter:search | filter:q| itemsPerPage: pageSize |orderBy:orderByField:reverseSort" >
+                                            <tr current-page="currentPage">
+                                                <td>
+                                                    <span class="pull-left-container">
                                                             <span class="label label-primary pull-left">{{$index+1}}</span>
                                                         </span>
-
-                                                    </th>
-                                                    <td>
-                                                        {{testplan.TestPlanName}}
-                                                    </td>
-                                                    <td>
-                                                        {{testplan.BusinessUnit.BusinessUnitName}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-center">
-
-
-                                                            <div class="btn-group">
-                                                                <button data-ng-click="TestPlanEdit(this,testplan)" class="btn btn-info btn-xs" type="button">
-                                                                    <span class="fa fa-pencil-square-o"></span> Edit
-                                                                </button>
-                                                                <button data-ng-click="TestPlanShowConfirm(testplan)" class="btn btn-danger btn-xs" type="button">
-                                                                    <span class="fa fa-trash"></span> Delete
-                                                                </button>
-                                                            </div>
+                                                </td>
+                                                <td>
+                                                    {{testplan.TestPlanName}}
+                                                </td>
+                                                <td>
+                                                    {{testplan.BusinessUnit.BusinessUnitName}}
+                                                </td>
+                                                <td>
+                                                    <div class="text-center">
+                                                        <div class="btn-group">
+                                                            <button data-ng-click="TestPlanEdit(this,testplan)" class="btn btn-info btn-xs" type="button">
+                                                                <span class="fa fa-pencil-square-o"></span> Edit
+                                                            </button>
+                                                            <button data-ng-click="TestPlanShowConfirm(testplan)" class="btn btn-danger btn-xs" type="button">
+                                                                <span class="fa fa-trash"></span> Delete
+                                                            </button>
+                                                            <a href="">
+                                                                <div class="handpointer glyphicon glyphicon-chevron-right" ng-click="testplan.expanded=!testplan.expanded;collapse($event,this,testplan.TestPlanId);"
+                                                                     aria-expanded="false">
+                                                                </div>
+                                                            </a>
                                                         </div>
-                                                    </td>
-                                                </tr>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr ng-show="testplan.expanded" ng-repeat-end="">
+                                                <td colspan="4">
+                                                    <div testgroup modelid=testplan.TestPlanId />
+                                                </td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>

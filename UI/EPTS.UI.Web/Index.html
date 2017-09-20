@@ -19,7 +19,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="Content/AdminLTE/all-skins.min.css">
     <link href="content/loading-bar.css" rel="stylesheet" />
-    <link rel="stylesheet" href="Content/myStyle.css" />
+    <link rel="stylesheet" href="Content/myStyle.css"/>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -339,6 +339,7 @@
                             <li><a href="#/BusinessUnit"><i class="fa fa-circle-o"></i> Business Units</a></li>
                             <li><a href="#/Family"><i class="fa fa-circle-o"></i> Families</a></li>
                             <li><a href="#/Model"><i class="fa fa-circle-o"></i> Models</a></li>
+                            <li><a href="#/TestPlan"><i class="fa fa-circle-o"></i> Test Plan</a></li>
                             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
                         </ul>
                     </li>
@@ -691,33 +692,31 @@
         <!-- Add the sidebar's background. This div must be placed
              immediately after the control sidebar -->
         <!-- pager -->
-        <pagination total-items="totalItems" items-per-page="itemsPerPage"
-                    ng-model="currentPage" ng-change="pageChanged()"></pagination>
+
         <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
     <!-- #PLUGINS -->
-    <script src="Scripts/jquery-3.1.1.js"></script>
+    <script src="Scripts/jquery-3.2.1.js"></script>
     <!-- BOOTSTRAP JS -->
     <script src="Scripts/bootstrap.js"></script>
 
     <!-- AdminLTE App -->
     <script src="AdminLTE.js"></script>
 
-    <script src="scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="scripts/jquery.signalR-2.2.2.min.js"></script>
     <script src="http://humbertopedraza.dynu.com/epts/WebAPI/signalr/hubs"></script>
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/angular-ui/ui-bootstrap-tpls.js"></script>
     <script src="scripts/angular-route.min.js"></script>
     <script src="scripts/angular-local-storage.min.js"></script>
     <script src="scripts/loading-bar.min.js"></script>
-    <script src="scripts/dirPagination.js"></script>
+    <!--<script src="scripts/dirPagination.js"></script>-->
 
 
     <script src="scripts/angular-mocks.js"></script>
     <script src="scripts/moment.min.js"></script>
     <script src="scripts/angular-moment.min.js"></script>
-    <script src="scripts/dirPagination.js"></script>
 
     <!-- Load app main script -->
     <script src="app/app.js"></script>
@@ -729,6 +728,9 @@
     <script src="app/services/familyService.js"></script>
     <script src="app/services/partnumberService.js"></script>
     <script src="app/services/businessunitService.js"></script>
+    <script src="app/services/testplanService.js"></script>
+    <script src="app/services/testgroupService.js"></script>
+    <script src="app/services/testService.js"></script>
     <!-- Load controllers -->
     <script src="app/controllers/homeController.js"></script>
     <script src="app/controllers/loginController.js"></script>
@@ -738,8 +740,9 @@
     <script src="app/controllers/catalogs/familyController.js"></script>
     <script src="app/controllers/catalogs/modelController.js"></script>
     <script src="app/controllers/catalogs/partnumberController.js"></script>
-    <!--<script src="app/controllers/modeldetailController.js"></script>-->
-
+    <script src="app/controllers/catalogs/testplanController.js"></script>
+    <script src="app/controllers/catalogs/testgroupController.js"></script>
+    <script src="app/controllers/catalogs/testController.js"></script>
     <script src="scripts/angular-modal-service.js"></script>
 
 </body>

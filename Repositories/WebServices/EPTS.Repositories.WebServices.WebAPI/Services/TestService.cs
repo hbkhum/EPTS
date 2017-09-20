@@ -86,6 +86,24 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
         {
             return await  _dataRepositories.TestRepository.GetById(id);
         }
+        public async Task<IEnumerable<Test>> GetAllTestByTestGroupId(Guid testgroupid)
+        {
+            var testgrouplinks = await _dataRepositories.TestGroupLinkRepository.GetAllAsync("TestGroupId=\"" + testgroupid + "\"", "");
+            var test = testgrouplinks.Select(c => c.TestId);
+            var data = await _dataRepositories.TestRepository.FindBy(c => test.Contains(c.TestId));
+            return data.Select(c => new Test
+            {
+                TestId = c.TestId,
+                TestName = c.TestName,
+                TestDesciption = c.TestDesciption,
+                HiLimit = c.HiLimit,
+                LoLimit = c.LoLimit,
+                TestTypeId = c.TestTypeId,
+                TestUnitId = c.TestUnitId,
+                TestType = Task.Run(async () => await _dataRepositories.TestTypeRepository.GetById(c.TestTypeId)).Result,
+                TestUnit = Task.Run(async () => await _dataRepositories.TestUnitRepository.GetById(c.TestUnitId)).Result
+            }).ToList();
+        }
     }
 }
 

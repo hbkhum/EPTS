@@ -61,14 +61,15 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
 
         [Route("")]
         // POST api/modeldetailapi
-        public async Task<Guid?> Post(ModelDetail modeldetail)
+        public async Task<ModelDetail> Post(ModelDetail modeldetail)
         {
             var result = await _dataServices.ModelDetailService.CreateModelDetail(modeldetail);
             if (!result) return null;
+            //modeldetail.PartNumber = await _dataServices.PartNumberService.GetPartNumberById(modeldetail.PartNumberId);
             //SignalR Methods Add Element
             var context = GlobalHost.ConnectionManager.GetHubContext<ModelDetailHub>();
             context.Clients.All.CreateModelDetail(modeldetail);
-            var task = Task.Run(() => modeldetail.ModelDetailId);
+            var task = Task.Run(() => modeldetail);
             return await task;
         }
         [Route("{id:Guid}")]
@@ -77,7 +78,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
         {
             var result = await _dataServices.ModelDetailService.UpdateModelDetail(modeldetail);
             if (!result) return await Task.Run(() => false);
-            modeldetail.PartNumber.ToList().ForEach(c => c.ModelDetail=null);
+            //modeldetail.PartNumber.ModelDetail = null;
             //SignalR Methods Update
             var context = GlobalHost.ConnectionManager.GetHubContext<ModelDetailHub>();
             context.Clients.All.UpdateModelDetail(modeldetail);
@@ -99,18 +100,18 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
             return await task;
 
         }
-        [Route("PartNumber/{id:Guid}")]
-        public async Task<bool> DeleteByPartNumber(Guid id)
-        {
-            var modeldetail = await _dataServices.ModelDetailService.GetModelDetailByPartNumberId(id);
-            var result = await _dataServices.ModelDetailService.DeleteModelDetail(modeldetail.ModelDetailId);
-            if (!result) return await Task.Run(() => false);
-            //SignalR Methods Delete
-            var context = GlobalHost.ConnectionManager.GetHubContext<ModelDetailHub>();
-            context.Clients.All.DeleteModelDetail(modeldetail);
-            var task = Task.Run(() => true);
-            return await task;
+        //[Route("PartNumber/{id:Guid}")]
+        //public async Task<bool> DeleteByPartNumber(Guid id)
+        //{
+        //    var modeldetail = await _dataServices.ModelDetailService.GetModelDetailByPartNumberId(id);
+        //    var result = await _dataServices.ModelDetailService.DeleteModelDetail(modeldetail.ModelDetailId);
+        //    if (!result) return await Task.Run(() => false);
+        //    //SignalR Methods Delete
+        //    var context = GlobalHost.ConnectionManager.GetHubContext<ModelDetailHub>();
+        //    context.Clients.All.DeleteModelDetail(modeldetail);
+        //    var task = Task.Run(() => true);
+        //    return await task;
 
-        }
+        //}
     }
 }

@@ -58,7 +58,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
                 ModelDetailId = c.ModelDetailId,
                 ModelId = c.ModelId,
                 PartNumberId = c.PartNumberId,
-                PartNumber = (ICollection<PartNumber>) Task.Run(async () => await _dataRepositories.PartNumberRepository.FindBy(n => n.PartNumberId== c.PartNumberId)).Result
+                //PartNumber = (ICollection<PartNumber>) Task.Run(async () => await _dataRepositories.PartNumberRepository.FindBy(n => n.PartNumberId== c.PartNumberId)).Result
             }).ToList();
             return await Task.FromResult(result);
         }

@@ -28,94 +28,79 @@
                                     </h3>
                                 </div>
                                 <div class="panel-body">
-                                    <table class="table responsive table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th class="col-sm-1">
-                                                        #
-                                                </th>
-                                                <th>
-                                                    <div class="rows">
-                                                        <a href="" ng-click="orderByField='BusinessUnitName'; reverseSort = !reverseSort">
-                                                            Business Unit
-                                                            <span ng-show="orderByField == 'BusinessUnitName'">
-                                                                <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
-                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input ng-model="search.BusinessUnitName" id="search" class="form-control input-sm" placeholder="Business Unit text">
-                                                        <span class="input-group-addon"><i class="fa  fa-search"></i></span>
-                                                    </div>
-                                                </th>
-                                                <th>
-                                                    <div class="rows">
-                                                        <a href="" ng-click="orderByField='BusinessUnitDescription'; reverseSort = !reverseSort">
-                                                            Description
-                                                            <span ng-show="orderByField == 'BusinessUnitDescription'">
-                                                                <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
-                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input ng-model="search.BusinessUnitDescription" id="search" class="form-control input-sm" placeholder="Business Unit Description text">
-                                                        <span class="input-group-addon"><i class="fa  fa-search"></i></span>
-                                                    </div>
-                                                </th>
-                                                <th>
-                                                    <div class="rows">
-                                                        <div class="text-center">
-                                                            <button data-ng-click="BusinessUnitShowAdd()" type="button" class="btn btn-success  btn-xs">
-                                                                <span class="fa fa-plus-circle"></span>Add Business Unit
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr dir-paginate="businessunit in businessunits | filter:search | filter:q| itemsPerPage: pageSize |orderBy:orderByField:reverseSort" current-page="currentPage">
-                                                <td data-title="#">
-                                                    
-                                                    <span class="pull-left-container">
-                                                        <span class="label label-primary pull-left">{{$index+1}}</span>
-                                                    </span>
-                                                    <p></p>
-                                                </td>
-                                                <td data-title="Business Unit">
-                                                    {{businessunit.BusinessUnitName}}
-                                                </td>
-                                                <td data-title="Description">
-                                                    {{businessunit.BusinessUnitDescription}}
-                                                </td>
-                                                <td data-title="Acction">
-                                                    <div class="text-center">
-                                                        <div class="btn-group">
-                                                            <button data-ng-click="BusinessUnitEdit(this,businessunit)" class="btn btn-info btn-xs" type="button">
-                                                                <span class="fa fa-pencil-square-o"></span> Edit
-                                                            </button>
-                                                            <button data-ng-click="BusinessUnitShowConfirm(businessunit)" class="btn btn-danger btn-xs" type="button">
-                                                                <span class="fa fa-trash"></span> Delete
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
 
-                                    <div class="row">
+                                    <div class="panel-heading row">
+                                        <div class="col-sm-1 col-xs-12 pull-left">#</div>
+                                        <div class="col-sm-4 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <a href="" ng-click="orderByField='BusinessUnitName'; reverseSort = !reverseSort;Change()">
+                                                    Business Unit
+                                                    <span ng-show="orderByField == 'BusinessUnitName'">
+                                                        <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="input-group">
+                                                <input ng-model="search.BusinessUnitName" id="search" class="form-control input-sm" placeholder="Business Unit text" ng-change="Change()">
+                                                <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <a href="" ng-click="orderByField='BusinessUnitDescription'; reverseSort = !reverseSort;Change()">
+                                                    Description
+                                                    <span ng-show="orderByField == 'BusinessUnitDescription'">
+                                                        <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="input-group">
+                                                <input ng-model="search.BusinessUnitDescription" id="search" class="form-control input-sm" placeholder="Business Unit Description text" ng-change="Change()">
+                                                <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <p></p>
+                                            </div>
+                                            <div class="rows">
+                                                <button data-ng-click="BusinessUnitShowAdd()" type="button" class="btn btn-success  btn-xs">
+                                                    <span class="fa fa-plus-circle"></span>Add Business Unit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div ng-repeat="businessunit in businessunits">
+                                        <div>
+                                            <div class="col-sm-1 col-xs-12 pull-left">
+                                                <span class="pull-left-container">
+                                                    <span class="label label-primary pull-left">{{$index+1}}</span>
+                                                </span>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-12  pull-left" data-ng-bind="businessunit.BusinessUnitName"></div>
+                                            <div class="col-sm-4 col-xs-12  pull-left" data-ng-bind="businessunit.BusinessUnitDescription"></div>
+                                            <div class="col-sm-3 col-xs-12  pull-left">
+                                                <div class="btn-group">
+                                                    <button data-ng-click="BusinessUnitEdit(this,businessunit)" class="btn btn-info btn-xs" type="button">
+                                                        <span class="fa fa-pencil-square-o"></span> Edit
+                                                    </button>
+                                                    <button data-ng-click="BusinessUnitShowConfirm(businessunit)" class="btn btn-danger btn-xs" type="button">
+                                                        <span class="fa fa-trash"></span> Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="rows">
                                         <div class="col-xs-1">
                                         </div>
                                         <div class="col-xs-10">
-                                            <div>
-                                                <div ng-controller="businessunitPaginationController" class="other-controller">
-                                                    <div class="text-center">
-                                                        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="scripts/dirPagination.tpl.html"></dir-pagination-controls>
-                                                    </div>
-                                                </div>
+                                            <div class="text-center" ng-show="totalItems>pageSize">
+                                                <ul uib-pagination total-items="totalItems" items-per-page="pageSize" ng-change="pageChanged()" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" direction-links="true"></ul>
                                             </div>
                                         </div>
                                         <div class="col-xs-1">

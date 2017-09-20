@@ -17,26 +17,26 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Testing
         public virtual Test Test { get; set; }
         public Guid TestId { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(15)]
-        [Required]
-        public string LoLimit { get; set; }
+        //[Column(TypeName = "ntext")]
+        //[MaxLength(15)]
+        //[Required]
+        //public string LoLimit { get; set; }
 
-        [Column(TypeName = "ntext")]
-        [MaxLength(15)]
-        [Required]
-        public string HiLimit { get; set; }
+        //[Column(TypeName = "ntext")]
+        //[MaxLength(15)]
+        //[Required]
+        //public string HiLimit { get; set; }
 
 
-        [ForeignKey("TestUnitId")]
-        [Required]
-        public virtual TestUnit TestUnit { get; set; }
-        public Guid TestUnitId { get; set; }
+        //[ForeignKey("TestUnitId")]
+        //[Required]
+        //public virtual TestUnit TestUnit { get; set; }
+        //public Guid TestUnitId { get; set; }
 
-        [ForeignKey("TestTypeId")]
-        [Required]
-        public virtual TestType TestType { get; set; }
-        public Guid TestTypeId { get; set; }
+        //[ForeignKey("TestTypeId")]
+        //[Required]
+        //public virtual TestType TestType { get; set; }
+        //public Guid TestTypeId { get; set; }
 
     }
 }

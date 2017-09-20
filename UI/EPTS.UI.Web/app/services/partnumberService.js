@@ -2,7 +2,8 @@
 /******                                 Factory                                     ******/
 /*****************************************************************************************/
 app.factory('partnumberFactory', function ($http, $q) {
-    var baseAddress = 'http://humbertopedraza.dynu.com/epts/webapi/api/';
+    //var baseAddress = 'http://humbertopedraza.dynu.com/epts/webapi/api/';
+    var baseAddress = 'http://localhost:24331/api/';
     var url = "";
 
     return {
@@ -20,9 +21,9 @@ app.factory('partnumberFactory', function ($http, $q) {
                     return $q.reject(response.data);
                 });
         },
-        GetPartNumberByModelId: function (model) {
+        GetPartNumberByModelId: function (model, pageSize, pageNumber, orderby, wherevalue) {
             url = baseAddress + 'PartNumber/Model/' + model;
-            return $http.get(url)
+            return $http.get(url, { params: { "pageSize": pageSize, "pageNumber": pageNumber, "orderby": orderby, "wherevalue": wherevalue } })
                 .then(function (response) {
                     if (typeof response.data === 'object') {
                         return response.data;
@@ -49,38 +50,32 @@ app.factory('partnumberFactory', function ($http, $q) {
                     return $q.reject(response.data);
                 });
         },
-        AddPartNumber: function (partnumber,modelid) {
+        AddPartNumber: function (partnumber) {
             url = baseAddress + 'PartNumber/';
             return $http.post(url, partnumber)
                 .then(function (response) {
-                    var modeldetail = {
-                        ModelId : modelid,
-                        PartNumberId: response.data
-                    };
-                    url = baseAddress + 'ModelDetail/';
-                    $http.post(url, modeldetail)
-                        .then(function () {
-                            
-                        }, function (response) {
-                            // something went wrong
-                            return $q.reject(response.data);
-                        });
                     return response.data;
-                    
                 }, function (response) {
                     // something went wrong
                     return $q.reject(response.data);
                 });
         },
+        AddPartNumberByModel: function (partnumber, modelid) {
+            url = baseAddress + 'ModelDetail/';
+            var modeldetail = {
+                ModelId: modelid,
+                PartNumberId: partnumber
+            };
+            return $http.post(url, modeldetail)
+                        .then(function (response) {
+                            return response.data;
+                        }, function (response) {
+                            // something went wrong
+                            return $q.reject(response.data);
+                        });
+        },
         DeletePartNumber: function (partnumber) {
-            url = baseAddress + 'ModelDetail/PartNumber/' + partnumber.PartNumberId;
-            $http.delete(url)
-                .then(function (response) {
-                }, function (response) {
-                    // something went wrong
-                    return $q.reject(response.data);
-                });
-            url = baseAddress + 'PartNumber/' + partnumber.PartNumberId;
+             url = baseAddress + 'PartNumber/' + partnumber.PartNumberId;
             return $http.delete(url)
                     .then(function (response) {
                         return response.data;
@@ -89,6 +84,17 @@ app.factory('partnumberFactory', function ($http, $q) {
                         return $q.reject(response.data);
                     });
             
+        },
+        DeletePartNumberByModel: function (modeldetail) {
+            url = baseAddress + 'ModelDetail/' + modeldetail.ModelDetailId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                }, function (response) {
+                    // something went wrong
+                    return $q.reject(response.data);
+                });
+
         },
         UpdatePartNumber: function (partnumber) {
             url = baseAddress + 'PartNumber/' + partnumber.PartNumberId;
