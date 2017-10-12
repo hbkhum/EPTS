@@ -13,6 +13,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services.Interfaces
         Task<IEnumerable<TestGroup>> GetAllTestGroups(string whereValue, string orderBy);
         Task<bool> UpdateTestGroup(TestGroup entity);
         Task<TestGroup> GetTestGroupById(Guid id);
+        Task<IEnumerable<TestGroup>> GetAllTestGroupByTestPlanId(Guid testplanid);
 
     }
 }

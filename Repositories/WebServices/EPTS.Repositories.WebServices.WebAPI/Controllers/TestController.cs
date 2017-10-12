@@ -88,23 +88,43 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
         [Route("")]
         public async Task<Guid?> Post(Test test)
         {
+            var testype = new TestType
+            {
+                TestTypeId = test.TestTypeId,
+                TestTypeName = test.TestType.TestTypeName
+            };
+            var testunit = new TestUnit
+            {
+                TestUnitId = test.TestUnit.TestUnitId,
+                TestUnitName = test.TestUnit.TestUnitName
+            };
+            test.TestType = null;
+            test.TestUnit = null;
             var result = await _dataServices.TestService.CreateTest(test);
             if (!result) return null;
             //SignalR Methods Add Element
+            test.TestType = testype;
+            test.TestUnit = testunit;
             var context = GlobalHost.ConnectionManager.GetHubContext<TestHub>();
             context.Clients.All.AddTest(test);
             var task = Task.Run(() => test.TestId);
             return await task;
         }
+        
 
         // PUT api/Test/5
         [Route("{id:Guid}")]
         //[HttpPut]
         public async Task<bool> Put(Guid id, Test test)
         {
+            var testype = test.TestType;
+            var testunit= test.TestUnit;
+
             var result = await _dataServices.TestService.UpdateTest(test);
             if (!result) return await Task.Run(() => false);
             //SignalR Methods Update
+            test.TestType = testype;
+            test.TestUnit = testunit;
             var context = GlobalHost.ConnectionManager.GetHubContext<TestHub>();
             context.Clients.All.UpdateTest(test);
             var task = Task.Run(() => true);
@@ -127,6 +147,10 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
 
         }
     }
+
+
+
+
 }
 
 

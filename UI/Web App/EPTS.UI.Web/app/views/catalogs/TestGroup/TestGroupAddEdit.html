@@ -1,0 +1,77 @@
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="testgroupModalLabel">
+                    <i class="fa fa-share-alt"></i> {{ testgroupEditmode!=0 ? 'Edit TestGroup':'Add TestGroup' ;   }}
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" name="testgroupform">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">TestGroup Id</label>
+                        <div class="col-sm-10">
+                            <span>{{testgroup.TestGroupId}}</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': testgroupform.testgroupname.$valid && testgroupform.testgroupname.$dirty,
+                                    'form-group has-error has-feedback': (testgroupform.testgroupname.$invalid && testgroupform.testgroupname.$dirty) || testgroupform.testgroupname.$error.required ,
+                                    'form-group ': !testgroupform.testgroupname.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">TestGroup Name</label>
+                        <div class="col-sm-10">
+                            <input placeholder="TestGroup Name" required type="text" id="testgroupname"
+                                   name="testgroupname" ng-model="testgroup.TestGroupName" title="Enter The TestGroup Name"
+                                   ng-minlength="5" ng-maxlength="50" class="form-control"/>
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testgroupform.testgroupname.$valid && testgroupform.testgroupname.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testgroupform.testgroupname.$invalid && testgroupform.testgroupname.$dirty,
+                                             '':!testgroupform.testgroupname.$dirty}"></span>
+                            <span ng-show="testgroupform.testgroupname.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!testgroupform.testgroupname.$error.required && (testgroupform.testgroupname.$error.minlength || testgroupform.testgroupname.$error.maxlength) && testgroupform.testgroupname.$dirty" class="label label-danger">Sequence ust be between 1 and 3 characters.</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': testgroupform.sequence.$valid && testgroupform.sequence.$dirty,
+                                    'form-group has-error has-feedback': (testgroupform.sequence.$invalid && testgroupform.sequence.$dirty) || testgroupform.sequence.$error.required ,
+                                    'form-group ': !testgroupform.sequence.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Sequence</label>
+                        <div class="col-sm-2">
+                            <input placeholder="Sequence" required type="text" id="sequence"
+                                   name="sequence" ng-model="testgroup.Sequence" title="Enter The Sequence"
+                                   ng-minlength="1" ng-maxlength="3" class="form-control" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testgroupform.sequence.$valid && testgroupform.sequence.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testgroupform.sequence.$invalid && testgroupform.sequence.$dirty,
+                                             '':!testgroupform.sequence.$dirty}"></span>
+                            <span ng-show="testgroupform.sequence.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!testgroupform.sequence.$error.required && (testgroupform.sequence.$error.minlength || testgroupform.sequence.$error.maxlength) && testgroupform.sequence.$dirty" class="label label-danger">TestGroup Name ust be between 5 and 20 characters.</span>
+                        </div>
+                        <div class="col-sm-8"></div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': testgroupform.description.$valid && testgroupform.description.$dirty,
+                                    'form-group has-error has-feedback': (testgroupform.description.$invalid && testgroupform.description.$dirty) || testgroupform.description.$error.required ,
+                                    'form-group ': !testgroupform.description.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-10">
+                            <input placeholder="Description" required type="text" id="description"
+                                   name="description" ng-model="testgroup.Description" title="Enter The TestGroup Name"
+                                   ng-minlength="5" ng-maxlength="50" class="form-control" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testgroupform.description.$valid && testgroupform.description.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testgroupform.description.$invalid && testgroupform.description.$dirty,
+                                             '':!testgroupform.description.$dirty}"></span>
+                            <span ng-show="testgroupform.description.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!testgroupform.description.$error.required && (testgroupform.description.$error.minlength || testgroupform.description.$error.maxlength) && testgroupform.description.$dirty" class="label label-danger">Description ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <span data-ng-hide="testgroupEditmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="testgroupform.$invalid" class="btn btn-primary" data-dismiss="modal">Add</button>
+                </span>
+                <span data-ng-show="testgroupEditmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="testgroupform.$invalid || !testgroupform.$dirty" class="btn btn-primary" data-dismiss="modal">Update</button>
+                </span>
+                <button type="button" ng-click="close(false)" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,146 @@
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="testModalLabel">
+                    <i class="fa fa-share-alt"></i> {{ testEditmode!=0 ? 'Edit Test':'Add Test' ;   }}
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" name="testform">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">Test Id</label>
+                        <div class="col-sm-10">
+                            <span>{{test.TestId}}</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': testform.testname.$valid && testform.testname.$dirty,
+                                    'form-group has-error has-feedback': (testform.testname.$invalid && testform.testname.$dirty) || testform.testname.$error.required ,
+                                    'form-group ': !testform.testname.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Test Name</label>
+                        <div class="col-sm-10">
+                            <input placeholder="Test Name" required type="text" id="testname"
+                                   name="testname" ng-model="test.TestName" title="Enter The Test Name"
+                                   ng-minlength="5" ng-maxlength="50" class="form-control" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback col-sm-12': testform.testname.$valid && testform.testname.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback col-sm-12': testform.testname.$invalid && testform.testname.$dirty,
+                                             '':!testform.testname.$dirty}"></span>
+                            <span ng-show="testform.testname.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!testform.testname.$error.required && (testform.testname.$error.minlength || testform.testname.$error.maxlength) && testform.testname.$dirty" class="label label-danger">Test Name ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': testform.testdesciption.$valid && testform.testdesciption.$dirty,
+                                    'form-group has-error has-feedback': (testform.testdesciption.$invalid && testform.testdesciption.$dirty) || testform.testdesciption.$error.required ,
+                                    'form-group ': !testform.testdesciption.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Desciption</label>
+                        <div class="col-sm-10">
+                            <input placeholder="Test Name" required type="text" id="testdesciption"
+                                   name="testdesciption" ng-model="test.TestDesciption" title="Enter The Desciption"
+                                   ng-minlength="5" ng-maxlength="50" class="form-control" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testform.testdesciption.$valid && testform.testdesciption.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testform.testdesciption.$invalid && testform.testdesciption.$dirty,
+                                             '':!testform.testdesciption.$dirty}"></span>
+                            <span ng-show="testform.testdesciption.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!testform.testdesciption.$error.required && (testform.testdesciption.$error.minlength || testform.testdesciption.$error.maxlength) && testform.testdesciption.$dirty" class="label label-danger">Desciption ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div ng-class="{'form-group  has-success has-feedback': testform.sequence.$valid && testform.sequence.$dirty,
+                                    'form-group has-error has-feedback': (testform.sequence.$invalid && testform.sequence.$dirty) || testform.sequence.$error.required ,
+                                    'form-group ': !testform.sequence.$dirty}">
+                                <label for="title" class="col-sm-6 control-label">Sequence</label>
+                                <div class="col-sm-6">
+                                    <input placeholder="Sequence" required type="text" id="sequence"
+                                           name="sequence" ng-model="test.Sequence" title="Enter The Sequence"
+                                           ng-minlength="1" ng-maxlength="3" class="form-control"/>
+                                    <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testform.sequence.$valid && testform.sequence.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testform.sequence.$invalid && testform.sequence.$dirty,
+                                             '':!testform.sequence.$dirty}"></span>
+                                    <span ng-show="testform.sequence.$error.required " class="label label-danger">Required!</span>
+                                    <span ng-show="!testform.sequence.$error.required && (testform.sequence.$error.minlength || testform.sequence.$error.maxlength) && testform.sequence.$dirty" class="label label-danger">Sequence ust be between 5 and 20 characters.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div ng-class="{'form-group has-success has-feedback': testform.testunit.$valid && testform.testunit.$dirty,
+                                    'form-group has-error has-feedback': (testform.testunit.$invalid && testform.testunit.$dirty) || testform.testunit.$error.required ,
+                                    'form-group ': !testform.testunit.$dirty}">
+                                <label for="title" class="col-sm-2 control-label">Test Unit</label>
+                                <div class="col-sm-10">
+                                    <select name="testunit" class="form-control" required ng-model="selectedItemTestUnit" ng-options="item as item.TestUnitName for item in testunits track by item.TestUnitId" ng-change="updateTestUnit(selectedItemTestUnit)"></select>
+                                    <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testform.v.$valid && testform.testunit.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testform.testunit.$invalid && testform.testunit.$dirty,
+                                             '':!testform.testunit.$dirty}"></span>
+                                    <span ng-show="testform.testunit.$error.required " class="label label-danger">Required!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div ng-class="{'form-group has-success has-feedback': testform.lolimit.$valid && testform.lolimit.$dirty,
+                                    'form-group has-error has-feedback': (testform.lolimit.$invalid && testform.lolimit.$dirty) || testform.lolimit.$error.required ,
+                                    'form-group': !testform.lolimit.$dirty}">
+                                <label for="title" class="col-sm-4 control-label">Low Limit</label>
+                                <div class="col-sm-8">
+                                    <input placeholder="Low Limit" required type="text" id="lolimit"
+                                           name="lolimit" ng-model="test.LoLimit" title="Enter Low Limit"
+                                           ng-minlength="1" class="form-control"/>
+                                    <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testform.lolimit.$valid && testform.lolimit.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testform.lolimit.$invalid && testform.lolimit.$dirty,
+                                             '':!testform.lolimit.$dirty}"></span>
+                                    <span ng-show="testform.lolimit.$error.required " class="label label-danger">Required!</span>
+                                    <span ng-show="!testform.lolimit.$error.required && (testform.lolimit.$error.minlength) && testform.lolimit.$dirty" class="label label-danger">Sequence ust be between 5 and 20 characters.</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div ng-class="{'form-group has-success has-feedback': testform.testtype.$valid && testform.testtype.$dirty,
+                                    'form-group has-error has-feedback': (testform.testtype.$invalid && testform.testtype.$dirty) || testform.testtype.$error.required ,
+                                    'form-group ': !testform.testtype.$dirty}">
+                                <label for="title" class="col-sm-2 control-label">Test Type</label>
+                                <div class="col-sm-10">
+                                    <select name="testtype" class="form-control" required ng-model="selectedItemTestType" ng-options="item as item.TestTypeName for item in testtypes track by item.TestTypeId" ng-change="updateTestType(selectedItemTestType)"></select>
+                                    <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testform.v.$valid && testform.testtype.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testform.testtype.$invalid && testform.testtype.$dirty,
+                                             '':!testform.testtype.$dirty}"></span>
+                                    <span ng-show="testform.testtype.$error.required " class="label label-danger">Required!</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div ng-class="{'form-group  has-success has-feedback': testform.hilimit.$valid && testform.hilimit.$dirty,
+                                    'form-group  has-error has-feedback': (testform.hilimit.$invalid && testform.hilimit.$dirty) || testform.hilimit.$error.required ,
+                                    'form-group ': !testform.hilimit.$dirty}">
+                                <label for="title" class="col-sm-4 control-label">High Limit</label>
+                                <div class="col-sm-8">
+                                    <input placeholder="Low Limit" required type="text" id="hilimit"
+                                           name="hilimit" ng-model="test.HiLimit" title="Enter Low Limit"
+                                           ng-minlength="1" class="form-control" />
+                                    <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': testform.hilimit.$valid && testform.hilimit.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': testform.hilimit.$invalid && testform.hilimit.$dirty,
+                                             '':!testform.hilimit.$dirty}"></span>
+                                    <span ng-show="testform.hilimit.$error.required " class="label label-danger">Required!</span>
+                                    <span ng-show="!testform.hilimit.$error.required && (testform.hilimit.$error.minlength) && testform.hilimit.$dirty" class="label label-danger">Sequence ust be between 5 and 20 characters.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <span data-ng-hide="testEditmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="testform.$invalid" class="btn btn-primary" data-dismiss="modal">Add</button>
+                </span>
+                <span data-ng-show="testEditmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="testform.$invalid || !testform.$dirty" class="btn btn-primary" data-dismiss="modal">Update</button>
+                </span>
+                <button type="button" ng-click="close(false)" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

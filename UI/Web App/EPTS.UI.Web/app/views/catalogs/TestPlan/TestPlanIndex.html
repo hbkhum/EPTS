@@ -1,0 +1,121 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Test Plans
+        <small>Control panels</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Catalogs</a></li>
+        <li class="active"><i class="fa fa-share-alt"></i> Test Plans</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Main row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <!--<h1>
+                        <i class="fa fa-share-alt"></i> Test Plan
+                    </h1>-->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="rows">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-share-alt"></i> Test Plans List
+                                    </h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    
+                                    <div class="panel-heading row well well-sm">
+                                        <div class="col-sm-1 col-xs-12 pull-left">#</div>
+                                        <div class="col-sm-8 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <a href="" ng-click="orderByField='TestPlanName'; reverseSort = !reverseSort">
+                                                    Test Plan
+                                                    <span ng-show="orderByField == 'TestPlanName';">
+                                                        <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="input-group">
+                                                <input ng-model="search.TestPlanName" class="form-control input-sm" placeholder="Test Plan Name text">
+                                                <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <p></p>
+                                            </div>
+                                            <div class="rows">
+                                                <div class="text-center">
+                                                    <button data-ng-click="TestPlanShowAdd()" type="button" class="btn btn-success  btn-xs">
+                                                        <span class="fa fa-plus-circle"></span> Add TestPlan
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div ng-repeat="testplan in filterData=(testplans | filter:search |orderBy:orderByField:reverseSort ) |  limitTo:pageSize:pageSize*(currentPage-1) ">
+                                        <div>
+                                            <div class="col-sm-1 col-xs-12 pull-left">
+                                                <span class="pull-left-container">
+                                                    <span class="label label-primary pull-left">{{$index+1}}</span>
+                                                </span>
+                                            </div>
+                                            <div class="col-sm-8 col-xs-12  pull-left" data-ng-bind="testplan.TestPlanName"></div>
+                                            <div class="col-sm-3 col-xs-12  pull-left">
+                                                <div class="btn-group">
+                                                    <button data-ng-click="TestPlanEdit(this,testplan)" class="btn btn-info btn-xs" type="button">
+                                                        <span class="fa fa-pencil-square-o"></span> Edit
+                                                    </button>
+                                                    <button data-ng-click="TestPlanShowConfirm(testplan)" class="btn btn-danger btn-xs" type="button">
+                                                        <span class="fa fa-trash"></span> Delete
+                                                    </button>
+                                                    <a href="">
+                                                        <div class="handpointer glyphicon glyphicon-chevron-right" ng-click="expanded=!expanded;collapse($event,this,testplan.TestPlanId);"
+                                                             aria-expanded="false">
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-show="expanded">
+                                            <div testgroup testplanid=testplan.TestPlanId />
+                                        </div>
+                                    </div>
+
+                                    <div class="rows">
+                                        <div class="col-xs-1">
+                                        </div>
+                                        <div class="col-xs-10">
+                                            <div class="text-center" ng-show="filterData.length>pageSize">
+                                                <ul uib-pagination class="pagination-sm pagination" total-items="filterData.length" ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="pageSize"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-1">
+                                        </div>
+                                    </div>                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+

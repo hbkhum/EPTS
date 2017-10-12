@@ -1,0 +1,128 @@
+
+
+<div class="row">
+    <br>
+    <br>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-share-alt"></i> Test Groups List
+                </h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="panel-heading row well well-sm">
+                    <div class="col-sm-4 col-xs-12 pull-left">
+                        <div class="rows">
+                            <a href="" ng-click="orderByField='TestGroupName'; reverseSort = !reverseSort">
+                                Test Group Name
+                                <span ng-show="orderByField == 'TestGroupName';">
+                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="input-group">
+                            <input ng-model="search.TestGroupName" class="form-control input-sm" placeholder="Test Group Name text">
+                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-12 pull-left">
+                        <div class="rows">
+                            <a href="" ng-click="orderByField='Sequence'; reverseSort = !reverseSort">
+                                Sequence
+                                <span ng-show="orderByField == 'Sequence'">
+                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="input-group">
+                            <input ng-model="search.Sequence" id="search" class="form-control input-sm" placeholder="Sequence">
+                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-12 pull-left">
+                        <div class="rows">
+                            <a href="" ng-click="orderByField='Description'; reverseSort = !reverseSort">
+                                Description
+                                <span ng-show="orderByField == 'Description'">
+                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="input-group">
+                            <input ng-model="search.Description" id="search" class="form-control input-sm" placeholder="Description">
+                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-12 pull-left">
+                        <div class="rows">
+                            <p></p>
+                        </div>
+                        <div class="rows">
+                            <button data-ng-click="TestGroupShowAdd()" type="button" class="btn btn-success  btn-xs">
+                                <span class="fa fa-plus-circle"></span> Add TestGroup
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div ng-repeat="testgroup in filterData=(testgroups | filter:search |orderBy:orderByField:reverseSort ) |  limitTo:pageSize:pageSize*(currentPage-1) ">
+                    <div>
+                        
+                        <div class="col-sm-4 col-xs-12  pull-left" data-ng-bind="testgroup.TestGroupName"></div>
+                        <div class="col-sm-3 col-xs-12  pull-left">
+                            <span class="pull-left-container">
+                                <span class="label label-primary pull-left">{{testgroup.Sequence}}</span>
+                            </span>
+                        </div>
+                        <div class="col-sm-3 col-xs-12  pull-left" data-ng-bind="testgroup.Description"></div>
+                        <div class="col-sm-2 col-xs-12  pull-left">
+                            <div class="btn-group">
+                                <button data-ng-click="TestGroupEdit(this,testgroup)" class="btn btn-info btn-xs" type="button">
+                                    <span class="fa fa-pencil-square-o"></span> Edit
+                                </button>
+                                <button data-ng-click="TestGroupShowConfirm(testgroup)" class="btn btn-danger btn-xs" type="button">
+                                    <span class="fa fa-trash"></span> Delete
+                                </button>
+                                <a href="">
+                                    <div class="handpointer glyphicon glyphicon-chevron-right" ng-click="expanded=!expanded;collapse($event,this,testgroup.TestGroupId);"
+                                         aria-expanded="false">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="expanded">
+                        <div>
+                            <div test testgroupid=testgroup.TestGroupId></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rows">
+                    <div class="col-xs-1">
+                    </div>
+                    <div class="col-xs-10">
+                        <div class="text-center" ng-show="filterData.length>pageSize">
+                            <ul uib-pagination class="pagination-sm pagination" total-items="filterData.length" ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="pageSize"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    
+</div>
+
+<!-- Main content -->
+
+<!-- /.content -->
+

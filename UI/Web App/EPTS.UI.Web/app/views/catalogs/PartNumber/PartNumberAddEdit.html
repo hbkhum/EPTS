@@ -1,0 +1,89 @@
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title" id="partnumberModalLabel">
+                    <i class="fa fa-share-alt"></i> {{ partnumberEditmode!=0 ? 'Edit PartNumber':'Add PartNumber' ;   }}
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" name="partnumberform">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">PartNumber Id</label>
+                        <div class="col-sm-10">
+                            <span>{{partnumber.PartNumberId}}</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': partnumberform.partnumbername.$valid && partnumberform.partnumbername.$dirty,
+                                    'form-group has-error has-feedback': (partnumberform.partnumbername.$invalid && partnumberform.partnumbername.$dirty) || partnumberform.partnumbername.$error.required ,
+                                    'form-group ': !partnumberform.partnumbername.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">PartNumber Name</label>
+                        <div class="col-sm-10">
+                            <input placeholder="PartNumber Name" required type="text" id="partnumbername"
+                                   name="partnumbername" ng-model="partnumber.PartNumberName" title="Enter The PartNumber Name"
+                                   ng-minlength="5" ng-maxlength="50" class="form-control" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': partnumberform.partnumbername.$valid && partnumberform.partnumbername.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': partnumberform.partnumbername.$invalid && partnumberform.partnumbername.$dirty,
+                                             '':!partnumberform.partnumbername.$dirty}"></span>
+                            <span ng-show="partnumberform.partnumbername.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!partnumberform.partnumbername.$error.required && (partnumberform.partnumbername.$error.minlength || partnumberform.partnumbername.$error.maxlength) && partnumberform.partnumbername.$dirty" class="label label-danger">PartNumber Name ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': partnumberform.description.$valid && partnumberform.description.$dirty,
+                                    'form-group has-error has-feedback': (partnumberform.description.$invalid && partnumberform.description.$dirty) || partnumberform.description.$error.required ,
+                                    'form-group ': !partnumberform.description.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Descripcion</label>
+                        <div class="col-sm-10">
+                            <input placeholder="PartNumber Name" required type="text" id="description"
+                                   name="description" ng-model="partnumber.Description" title="Enter The PartNumber Name"
+                                   ng-minlength="5" ng-maxlength="50" class="form-control" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': partnumberform.description.$valid && partnumberform.description.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': partnumberform.description.$invalid && partnumberform.description.$dirty,
+                                             '':!partnumberform.description.$dirty}"></span>
+                            <span ng-show="partnumberform.description.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!partnumberform.description.$error.required && (partnumberform.description.$error.minlength || partnumberform.description.$error.maxlength) && partnumberform.description.$dirty" class="label label-danger">PartNumber Name ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': partnumberform.revision.$valid && partnumberform.revision.$dirty,
+                                    'form-group has-error has-feedback': (partnumberform.revision.$invalid && partnumberform.revision.$dirty) || partnumberform.revision.$error.required ,
+                                    'form-group ': !partnumberform.revision.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Revision</label>
+                        <div class="col-sm-10">
+                            <input type="checkbox" placeholder="PartNumber Name" id="revision"
+                                   name="revision" ng-model="partnumber.Revision" class="form-check-input" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': partnumberform.revision.$valid && partnumberform.revision.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': partnumberform.revision.$invalid && partnumberform.revision.$dirty,
+                                             '':!partnumberform.revision.$dirty}"></span>
+                            <span ng-show="partnumberform.revision.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!partnumberform.revision.$error.required && (partnumberform.revision.$error.minlength || partnumberform.revision.$error.maxlength) && partnumberform.revision.$dirty" class="label label-danger">PartNumber Name ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                    <div ng-class="{'form-group has-success has-feedback': partnumberform.active.$valid && partnumberform.active.$dirty,
+                                    'form-group has-error has-feedback': (partnumberform.active.$invalid && partnumberform.active.$dirty) || partnumberform.active.$error.required ,
+                                    'form-group ': !partnumberform.active.$dirty}">
+                        <label for="title" class="col-sm-2 control-label">Active</label>
+                        <div class="col-sm-10">
+                            <input type="checkbox" id="active"
+                                   name="active" ng-model="partnumber.Active" class="form-check-input" />
+                            <span ng-class="{'glyphicon glyphicon-ok form-control-feedback': partnumberform.active.$valid && partnumberform.active.$dirty,
+                                             'glyphicon glyphicon-remove form-control-feedback': partnumberform.active.$invalid && partnumberform.active.$dirty,
+                                             '':!partnumberform.active.$dirty}"></span>
+                            <span ng-show="partnumberform.active.$error.required " class="label label-danger">Required!</span>
+                            <span ng-show="!partnumberform.active.$error.required && (partnumberform.active.$error.minlength || partnumberform.active.$error.maxlength) && partnumberform.active.$dirty" class="label label-danger">PartNumber Name ust be between 5 and 20 characters.</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <span data-ng-hide="partnumberEditmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="partnumberform.$invalid" class="btn btn-primary" data-dismiss="modal">Add</button>
+                </span>
+                <span data-ng-show="partnumberEditmode">
+                    <button type="submit" ng-click="close(true)" ng-disabled="partnumberform.$invalid || !partnumberform.$dirty" class="btn btn-primary" data-dismiss="modal">Update</button>
+                </span>
+                <button type="button" ng-click="close(false)" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

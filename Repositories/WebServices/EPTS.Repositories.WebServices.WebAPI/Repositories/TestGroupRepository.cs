@@ -21,5 +21,9 @@ namespace EPTS.Repositories.WebServices.WebAPI.Repositories
         {
             return await Dbset.FirstOrDefaultAsync(c => c.TestGroupId == id);
         }
+        public async Task<TestGroup> GetByTestPlanId(Guid id)
+        {
+            return await Dbset.FirstOrDefaultAsync(c => c.TestPlanId == id);
+        }
     }
 }

@@ -11,11 +11,15 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Testing
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid TestPlanId { get; set; }
 
-        [StringLength(15)]
+        [StringLength(50)]
         [Required]
         [Index(IsUnique = true)]
         public string TestPlanName { get; set; }
 
-        public virtual ICollection<TestPlanLink> TestPlanLink { get; set; }
+        [StringLength(50)]
+        //[Required]
+        public string Desciption { get; set; }
+
+        public virtual ICollection<TestGroup> TestGroup { get; set; }
     }
 }

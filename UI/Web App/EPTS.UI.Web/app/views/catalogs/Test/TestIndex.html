@@ -1,0 +1,150 @@
+<!-- Content Header (Page header) -->
+<!-- Main content -->
+
+<div class="row">
+    <br>
+    <br>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-share-alt"></i> Tests List
+                </h3>
+            </div>
+
+
+            <div class="panel-body">
+
+                <div class="panel-heading row well well-sm">
+                    <div class="col-sm-3 col-xs-12 pull-left">
+                        <div class="rows">
+                            <a href="" ng-click="orderByField='TestName'; reverseSort = !reverseSort">
+                                Test Name
+                                <span ng-show="orderByField == 'TestName';">
+                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="input-group">
+                            <input ng-model="search.TestName" class="form-control input-sm" placeholder="Test Name text">
+                            <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-xs-12 pull-left">
+                        <div class="rows">
+                            <a href="" ng-click="orderByField='Sequence'; reverseSort = !reverseSort">
+                                Sequence
+                                <span ng-show="orderByField == 'Sequence'">
+                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                </span>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-1 col-xs-12 pull-left">
+                        <div class="rows">
+                            <a href="" ng-click="orderByField='LoLimit'; reverseSort = !reverseSort">
+                                Low Limit
+                                <span ng-show="orderByField == 'LoLimit';">
+                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-12 pull-left">
+                        <div class="rows">
+                            <a href="" ng-click="orderByField='TestType.TestTypeName'; reverseSort = !reverseSort">
+                                Type Name
+                                <span ng-show="orderByField == 'TestType.TestTypeName';">
+                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-xs-12 pull-left">
+                        <div class="rows">
+                            <a href="" ng-click="orderByField='HiLimit'; reverseSort = !reverseSort">
+                                High Limit
+                                <span ng-show="orderByField == 'HiLimit';">
+                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-12 pull-left">
+                        <div class="rows">
+                            <a href="" ng-click="orderByField='TestUnit.TestUnitName'; reverseSort = !reverseSort">
+                                Test Unit
+                                <span ng-show="orderByField == 'TestUnit.TestUnitName';">
+                                    <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-12 pull-left">
+                        <div class="rows">
+                            <p></p>
+                        </div>
+                        <div class="rows">
+                            <div class="text-center">
+                                <button data-ng-click="TestShowAdd()" type="button" class="btn btn-success  btn-xs">
+                                    <span class="fa fa-plus-circle"></span> Add Test
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-repeat="test in filterData=(tests | filter:search |orderBy:orderByField:reverseSort ) |  limitTo:pageSize:pageSize*(currentPage-1) ">
+                    <div>
+                        <div class="col-sm-3 col-xs-12  pull-left" data-ng-bind="test.TestName"></div>
+                        <div class="col-sm-1 col-xs-12  pull-left">
+                            <span class="pull-left-container">
+                                <span data-ng-bind="test.Sequence" class="label label-primary pull-left"></span>
+                            </span>
+                        </div>
+                        <div class="col-sm-1 col-xs-12  pull-left" data-ng-bind="test.LoLimit"></div>
+                        <div class="col-sm-2 col-xs-12  pull-left" data-ng-bind="test.TestType.TestTypeName"></div>
+                        <div class="col-sm-1 col-xs-12  pull-left" data-ng-bind="test.HiLimit"></div>
+                        <div class="col-sm-2 col-xs-12  pull-left" data-ng-bind="test.TestUnit.TestUnitName"></div>
+                        <div class="col-sm-2 col-xs-12 pull-left">
+                            <div class="btn-group">
+                                <button data-ng-click="TestEdit(this,test)" class="btn btn-info btn-xs" type="button">
+                                    <span class="fa fa-pencil-square-o"></span> Edit
+                                </button>
+                                <button data-ng-click="TestShowConfirm(test)" class="btn btn-danger btn-xs" type="button">
+                                    <span class="fa fa-trash"></span> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rows">
+                    <div class="col-xs-1">
+                    </div>
+                    <div class="col-xs-10">
+                        <div class="text-center" ng-show="filterData.length>pageSize">
+                            <ul uib-pagination class="pagination-sm pagination" total-items="filterData.length" ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="pageSize"></ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+        
+</div>
+
+    
+    <!-- /.content -->
+

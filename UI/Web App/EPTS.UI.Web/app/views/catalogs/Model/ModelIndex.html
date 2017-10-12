@@ -1,0 +1,150 @@
+﻿<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Models
+        <small>Control panels</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Catalogs</a></li>
+        <li class="active"><i class="fa fa-share-alt"></i> Models</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Main row -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <!--<h1>
+                        <i class="fa fa-share-alt"></i> Model
+                    </h1>-->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="rows">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-share-alt"></i> Models List
+                                    </h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="panel-heading row well well-sm">
+                                        <div class="col-sm-1 col-xs-12 pull-left">#</div>
+                                        <div class="col-sm-3 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <a href="" ng-click="orderByField='ModelName'; reverseSort = !reverseSort">
+                                                    Model
+                                                    <span ng-show="orderByField == 'ModelName';">
+                                                        <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="input-group">
+                                                <input ng-model="search.ModelName" class="form-control input-sm" placeholder="Model text">
+                                                <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <a href="" ng-click="orderByField='Family.FamilyName'; reverseSort = !reverseSort">
+                                                    Family Name
+                                                    <span ng-show="orderByField == 'Family.FamilyName'">
+                                                        <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="input-group">
+                                                <input ng-model="search.Family.FamilyName" id="search" class="form-control input-sm" placeholder="Family Name text">
+                                                <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <a href="" ng-click="orderByField='Family.BusinessUnit.BusinessUnitName'; reverseSort = !reverseSort">
+                                                    Business Unit Name
+                                                    <span ng-show="orderByField == 'Family.BusinessUnit.BusinessUnitName'">
+                                                        <span ng-class="{'glyphicon glyphicon-circle-arrow-up': !reverseSort,
+                                                                                     'glyphicon glyphicon-circle-arrow-down': reverseSort}"></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="input-group">
+                                                <input ng-model="search.Family.BusinessUnit.BusinessUnitName" id="search" class="form-control input-sm" placeholder="Business Unit Name text">
+                                                <span class="input-group-addon"><i class="fa  fa-search"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 col-xs-12 pull-left">
+                                            <div class="rows">
+                                                <p></p>
+                                            </div>
+                                            <div class="rows">
+                                                <button data-ng-click="ModelShowAdd()" type="button" class="btn btn-success  btn-xs">
+                                                    <span class="fa fa-plus-circle"></span> Add Model
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-repeat="model in filterData=(models | filter:search |orderBy:orderByField:reverseSort ) |  limitTo:pageSize:pageSize*(currentPage-1) ">
+                                        <div>
+                                            <div class="col-sm-1 col-xs-12 pull-left">
+                                                <span class="pull-left-container">
+                                                    <span class="label label-primary pull-left">{{$index+1}}</span>
+                                                </span>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-12  pull-left" data-ng-bind="model.ModelName"></div>
+                                            <div class="col-sm-3 col-xs-12  pull-left" data-ng-bind="model.Family.FamilyName"></div>
+                                            <div class="col-sm-3 col-xs-12  pull-left" data-ng-bind="model.Family.BusinessUnit.BusinessUnitName"></div>
+                                            <div class="col-sm-2 col-xs-12  pull-left">
+                                                <div class="btn-group">
+                                                    <button data-ng-click="ModelEdit(this,model)" class="btn btn-info btn-xs" type="button">
+                                                        <span class="fa fa-pencil-square-o"></span> Edit
+                                                    </button>
+                                                    <button data-ng-click="ModelShowConfirm(model)" class="btn btn-danger btn-xs" type="button">
+                                                        <span class="fa fa-trash"></span> Delete
+                                                    </button>
+                                                    <a href="">
+                                                        <div class="handpointer glyphicon glyphicon-chevron-right" ng-click="expanded=!expanded;collapse($event,this,model.ModelId);"
+                                                             aria-expanded="false">
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-show="expanded">
+                                            <div>
+                                                <div partnumber modelid=model.ModelId></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="rows">
+                                        <div class="col-xs-1">
+                                        </div>
+                                        <div class="col-xs-10">
+                                            <div class="text-center" ng-show="filterData.length>pageSize">
+                                                <ul uib-pagination class="pagination-sm pagination" total-items="filterData.length" ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="pageSize"></ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+

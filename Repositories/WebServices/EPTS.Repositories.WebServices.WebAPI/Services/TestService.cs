@@ -84,22 +84,25 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
 
         public async Task<Test> GetTestById(Guid id)
         {
-            return await  _dataRepositories.TestRepository.GetById(id);
+            var data= await  _dataRepositories.TestRepository.GetById(id);
+            data.TestType = await _dataRepositories.TestTypeRepository.GetById(data.TestTypeId);
+            data.TestUnit = await _dataRepositories.TestUnitRepository.GetById(data.TestUnitId);
+            return data;
         }
         public async Task<IEnumerable<Test>> GetAllTestByTestGroupId(Guid testgroupid)
         {
-            var testgrouplinks = await _dataRepositories.TestGroupLinkRepository.GetAllAsync("TestGroupId=\"" + testgroupid + "\"", "");
-            var test = testgrouplinks.Select(c => c.TestId);
-            var data = await _dataRepositories.TestRepository.FindBy(c => test.Contains(c.TestId));
+            var data = await _dataRepositories.TestRepository.FindBy(c => c.TestGroupId==testgroupid);
             return data.Select(c => new Test
             {
                 TestId = c.TestId,
                 TestName = c.TestName,
+                TestGroupId = c.TestGroupId,
                 TestDesciption = c.TestDesciption,
                 HiLimit = c.HiLimit,
                 LoLimit = c.LoLimit,
                 TestTypeId = c.TestTypeId,
                 TestUnitId = c.TestUnitId,
+                Sequence = c.Sequence,
                 TestType = Task.Run(async () => await _dataRepositories.TestTypeRepository.GetById(c.TestTypeId)).Result,
                 TestUnit = Task.Run(async () => await _dataRepositories.TestUnitRepository.GetById(c.TestUnitId)).Result
             }).ToList();

@@ -13,11 +13,9 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Catalogs
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid StationId { get; set; }
 
-        [StringLength(15)]
-        [Index(IsUnique = true)]
+        [StringLength(50)]
         [Required]
         public string StationName { get; set; }
-
 
         [ForeignKey("LineId")]
         public virtual Line Line { get; set; }

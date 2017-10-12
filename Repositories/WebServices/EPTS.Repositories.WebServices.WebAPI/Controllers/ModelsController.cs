@@ -68,6 +68,8 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
             var result = await _dataServices.ModelService.CreateModel(model);
             if (!result) return null;
             //SignalR Methods Add Element
+            model.Family = await _dataServices.FamilyService.GetFamilyById(model.FamilyId);
+            model.Family.BusinessUnit = await _dataServices.BusinessUnitService.GetBusinessUnitById(model.Family.BusinessUnitId);
             var context = GlobalHost.ConnectionManager.GetHubContext<ModelHub>();
             context.Clients.All.AddModel(model);
             var task = Task.Run(() => model.ModelId);

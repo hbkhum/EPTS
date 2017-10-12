@@ -82,10 +82,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Infrastructure\Data\Devices.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Infrastructure\Data\Devices.xml">
       <SubType>Designer</SubType>
-    </Content>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

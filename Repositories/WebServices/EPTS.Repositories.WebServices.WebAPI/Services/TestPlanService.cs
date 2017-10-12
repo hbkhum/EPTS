@@ -62,9 +62,19 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
             {
                 TestPlanId = c.TestPlanId,
                 TestPlanName = c.TestPlanName,
-                //TestPlanLink = 
-                //BusinessUnitId = c.BusinessUnitId,
-                //BusinessUnit = Task.Run(async () => await _dataRepositories.BusinessUnitRepository.GetById(c.BusinessUnitId)).Result,
+                //TestGroup = (ICollection<TestGroup>) Task.Run(async () =>
+                //{
+                //    var data=await _dataRepositories.TestGroupRepository.FindBy(x => x.TestPlanId == c.TestPlanId);
+
+                //    return data.Select(x => new TestGroup
+                //    {
+                //        TestGroupId = x.TestGroupId,
+                //        TestPlanId = x.TestPlanId,
+                //        TestGroupName = x.TestGroupName,
+                //        TestPlan = 
+                //    });
+                //}).Result
+
             }).ToList();
             return await Task.FromResult(result);
         }

@@ -1,0 +1,53 @@
+﻿<UserControl xmlns:my="http://metro.mahapps.com/winfx/xaml/extra"  x:Class="EPTS.UI.WPF.Views.Layout.Main.TestPlan"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style x:Key="CenterAlignedColumn" TargetType="{x:Type DataGridCell}">
+            <Setter Property="HorizontalAlignment"  Value="Center" />
+            <Setter Property="Foreground" Value="Orange"></Setter>
+        </Style>
+        <Style x:Key="ColorColumn" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Foreground" Value="Orange"></Setter>
+        </Style>
+    </UserControl.Resources>
+
+
+    <Grid>
+        <controls:MetroAnimatedSingleRowTabControl x:Name="MainTabControl">
+            <TabItem Header="{Binding TestPlanViewModel.TestPlan.TestPlanName}">
+                <DataGrid ItemsSource="{Binding TestPlanViewModel.TestPlan.TestGroup}" AutoGenerateColumns="false" Width="auto" CanUserSortColumns="False" CanUserAddRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False" SelectionMode="Single"  RowDetailsVisibilityMode="Visible" Focusable="False"   >
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate >
+                            <DataGrid ItemsSource="{Binding Test}" AutoGenerateColumns="false"  CanUserSortColumns="False" CanUserAddRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False" HorizontalAlignment="Stretch" SelectionMode="Extended"  SelectionUnit="FullRow" RowDetailsVisibilityMode="Visible" controls:DataGridHelper.EnableCellEditAssist="False"   >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Test Name" Binding="{Binding TestName}" IsReadOnly="True" Width="300" CellStyle="{StaticResource ColorColumn}"  />
+                                    <DataGridTextColumn Header="Test Desciption" Binding="{Binding TestDesciption}" IsReadOnly="True" Width="300" CellStyle="{StaticResource ColorColumn}"  />
+                                    <DataGridTextColumn Header="Sequence" Binding="{Binding Sequence}" IsReadOnly="True" Width="75" CellStyle="{StaticResource CenterAlignedColumn}" />
+                                    <DataGridTextColumn Header="Low Limit" Binding="{Binding LoLimit}" IsReadOnly="True" Width="75" CellStyle="{StaticResource CenterAlignedColumn}" />
+                                    <DataGridTextColumn Header="Test Type" Binding="{Binding TestType.TestTypeName}" IsReadOnly="True" Width="75" CellStyle="{StaticResource CenterAlignedColumn}" />
+                                    <DataGridTextColumn Header="High Limit" Binding="{Binding HiLimit}" IsReadOnly="True" Width="75" CellStyle="{StaticResource CenterAlignedColumn}" />
+                                    <DataGridTextColumn Header="Test Unit" Binding="{Binding TestUnit.TestUnitName}" IsReadOnly="True" Width="75" CellStyle="{StaticResource CenterAlignedColumn}" />
+                                    <DataGridTextColumn Header="Result" Binding="{Binding Result}" IsReadOnly="True" Width="75" CellStyle="{StaticResource CenterAlignedColumn}" />
+                                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" IsReadOnly="True" Width="75" CellStyle="{StaticResource CenterAlignedColumn}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Test Group Name" Binding="{Binding TestGroupName}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Sequence" Binding="{Binding Sequence}" IsReadOnly="True" Width="*"  />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+        </controls:MetroAnimatedSingleRowTabControl>
+
+    </Grid>
+</UserControl>

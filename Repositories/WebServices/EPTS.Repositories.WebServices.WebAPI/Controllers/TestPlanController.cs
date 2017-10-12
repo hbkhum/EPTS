@@ -47,6 +47,19 @@ namespace EPTS.Repositories.WebServices.WebAPI.Controllers
             }
             return null;
         }
+        [Route("StationGroup/{code:alpha}")]
+        public async Task<IHttpActionResult> GetTestGroupByTestPlanId(string code, string type = "json")
+        {
+
+            var result = await _dataServices.TestResultService.GetAllTestByStationGroupCode(code);
+
+            if (type == "json")
+            {
+
+                return Ok(result);
+            }
+            return null;
+        }
 
         // GET api/TestPlan/5
         [Route("{id:Guid}")]

@@ -57,15 +57,8 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
 
         public async Task<IEnumerable<TestGroup>> GetAllTestGroups(string whereValue, string orderBy)
         {
-            var result= await _dataRepositories.TestGroupRepository.GetAllAsync(whereValue, orderBy);
-            result = result.Select(c => new TestGroup
-            {
-                TestGroupId = c.TestGroupId,
-                TestGroupName = c.TestGroupName,
-                //BusinessUnitId = c.BusinessUnitId,
-                //BusinessUnit = Task.Run(async () => await _dataRepositories.BusinessUnitRepository.GetById(c.BusinessUnitId)).Result,
-            }).ToList();
-            return await Task.FromResult(result);
+            return  await _dataRepositories.TestGroupRepository.GetAllAsync(whereValue, orderBy);
+            //return await Task.FromResult(result);
         }
 
         public async Task<bool> UpdateTestGroup(TestGroup entity)
@@ -88,16 +81,16 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
         }
         public async Task<IEnumerable<TestGroup>> GetAllTestGroupByTestPlanId(Guid testplanid)
         {
-            var testplanlinks = await _dataRepositories.TestPlanLinkRepository.GetAllAsync("TestPlanId=\"" + testplanid + "\"", "");
-            var testgroup = testplanlinks.Select(c => c.TestGroupId);
-            var data = await _dataRepositories.TestGroupRepository.FindBy(c => testgroup.Contains(c.TestGroupId));
-            return data.Select(c => new TestGroup
-            {
-                TestGroupId = c.TestGroupId,
-                TestGroupName = c.TestGroupName,
-                TestPlanLink = c.TestPlanLink,
-                TestGroupLink = (ICollection<TestGroupLink>) Task.Run(async () => await _dataRepositories.TestGroupLinkRepository.FindBy(x => x.TestGroupId==c.TestGroupId)).Result
-            }).ToList();
+            return  await _dataRepositories.TestGroupRepository.FindBy(c => c.TestPlanId==testplanid);
+            //var testgroup = testplanlinks.Select(c => c.TestGroupId);
+            //var data = await _dataRepositories.TestGroupRepository.FindBy(c => testgroup.Contains(c.TestGroupId));
+            //return data.Select(c => new TestGroup
+            //{
+            //    TestGroupId = c.TestGroupId,
+            //    TestGroupName = c.TestGroupName,
+            //    TestPlanLink = c.TestPlanLink,
+            //    TestGroupLink = (ICollection<TestGroupLink>) Task.Run(async () => await _dataRepositories.TestGroupLinkRepository.FindBy(x => x.TestGroupId==c.TestGroupId)).Result
+            //}).ToList();
         }
     }
 }

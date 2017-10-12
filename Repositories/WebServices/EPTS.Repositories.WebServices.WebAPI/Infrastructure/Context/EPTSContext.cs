@@ -28,14 +28,14 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Context
         public DbSet<Station> Station { get; set; }
         public DbSet<StationType> StationType { get; set; }
 
+        public DbSet<StationGroup> StationGroups { get; set; }
         public DbSet<Test> Test { get; set; }
         public DbSet<TestGroup> TestGroup { get; set; }
-        public DbSet<TestGroupLink> TestGroupLink { get; set; }
-        //public DbSet<TestLink> TestLink { get; set; }
         public DbSet<TestPlan> TestPlan { get; set; }
-        public DbSet<TestPlanLink> TestPlanLink { get; set; }
         public DbSet<TestType> TestType { get; set; }
         public DbSet<TestUnit> TestUnit { get; set; }
+
+        public DbSet<TestResult> TestResult { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

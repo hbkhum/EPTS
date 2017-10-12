@@ -9,7 +9,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Repositories
 
 
 
-        public DataRepositories(BusinessUnitRepository businessUnitRepository, FamilyRepository familyRepository, FlowRepository flowRepository, LineRepository lineRepository, ModelRepository modelRepository, ModelDetailRepository modelDetailRepository, PartNumberRepository partNumberRepository, StationRepository stationRepository, TestGroupLinkRepository testGroupLinkRepository, TestGroupRepository testGroupRepository,  TestPlanLinkRepository testPlanLinkRepository, TestRepository testRepository, TestPlanRepository testPlanRepository, TestTypeRepository testTypeRepository, TestUnitRepository testUnitRepository)
+        public DataRepositories(BusinessUnitRepository businessUnitRepository, FamilyRepository familyRepository, FlowRepository flowRepository, LineRepository lineRepository, ModelRepository modelRepository, ModelDetailRepository modelDetailRepository, PartNumberRepository partNumberRepository, StationRepository stationRepository, TestGroupRepository testGroupRepository,  TestRepository testRepository, TestPlanRepository testPlanRepository, TestTypeRepository testTypeRepository, TestUnitRepository testUnitRepository, TestResultRepository testResultRepository,StationGroupRepository stationGroupRepository)
         {
             BusinessUnitRepository = businessUnitRepository;
             FamilyRepository = familyRepository;
@@ -19,13 +19,13 @@ namespace EPTS.Repositories.WebServices.WebAPI.Repositories
             ModelDetailRepository = modelDetailRepository;
             PartNumberRepository = partNumberRepository;
             StationRepository = stationRepository;
-            TestGroupLinkRepository = testGroupLinkRepository;
             TestGroupRepository = testGroupRepository;
-            TestPlanLinkRepository = testPlanLinkRepository;
             TestRepository = testRepository;
             TestPlanRepository = testPlanRepository;
             TestTypeRepository = testTypeRepository;
             TestUnitRepository = testUnitRepository;
+            TestResultRepository = testResultRepository;
+            StationGroupRepository = stationGroupRepository;
         }
 
         public BusinessUnitRepository BusinessUnitRepository { get; set; }
@@ -36,14 +36,13 @@ namespace EPTS.Repositories.WebServices.WebAPI.Repositories
         public ModelDetailRepository ModelDetailRepository { get; set; }
         public PartNumberRepository PartNumberRepository { get; set; }
         public StationRepository StationRepository { get; set; }
-
-        public TestGroupLinkRepository TestGroupLinkRepository { get; set; }
         public TestGroupRepository TestGroupRepository { get; set; }
-        public TestPlanLinkRepository TestPlanLinkRepository { get; set; }
         public TestPlanRepository TestPlanRepository { get; set; }
         public TestRepository TestRepository { get; set; }
         public TestTypeRepository TestTypeRepository { get; set; }
         public TestUnitRepository TestUnitRepository { get; set; }
+        public TestResultRepository TestResultRepository { get; set; }
+        public StationGroupRepository StationGroupRepository { get; set; }
     }
 
     public interface IDataRepositories
@@ -56,15 +55,13 @@ namespace EPTS.Repositories.WebServices.WebAPI.Repositories
         ModelDetailRepository ModelDetailRepository { get; set; }
         PartNumberRepository PartNumberRepository { get; set; }
         StationRepository StationRepository { get; set; }
-
-        TestGroupLinkRepository TestGroupLinkRepository { get; set; }
         TestGroupRepository TestGroupRepository { get; set; }
-        TestPlanLinkRepository TestPlanLinkRepository { get; set; }
         TestPlanRepository TestPlanRepository { get; set; }
         TestRepository TestRepository { get; set; }
         TestTypeRepository TestTypeRepository { get; set; }
         TestUnitRepository TestUnitRepository { get; set; }
-
+        TestResultRepository TestResultRepository { get; set; }
+        StationGroupRepository StationGroupRepository { get; set; }
 
     }
 }

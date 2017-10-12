@@ -65,7 +65,19 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
                 ModelId = c.ModelId,
                 ModelName = c.ModelName,
                 FamilyId = c.FamilyId,
-                Family = Task.Run(async () => await _dataRepositories.FamilyRepository.GetById(c.FamilyId)).Result,
+                //Task.Run(async () =>
+                //{
+                //    var data = await _dataRepositories.PartNumberRepository.GetById(c.PartNumberId);
+                //    data.ModelDetail = null;
+                //    return data;
+                //}).Result,
+                Family = Task.Run(async () =>
+                {
+                    var data =await _dataRepositories.FamilyRepository.GetById(c.FamilyId);
+                    data.BusinessUnit = await _dataRepositories.BusinessUnitRepository.GetById(c.Family.BusinessUnitId);
+                    return data;
+
+                }).Result,
                 ModelDetails = Task.Run(async () => await _dataRepositories
                       .ModelDetailRepository
                         .FindBy(x => x.ModelId == c.ModelId)).Result.ToList()

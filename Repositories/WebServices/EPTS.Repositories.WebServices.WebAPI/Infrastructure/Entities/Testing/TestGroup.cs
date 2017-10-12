@@ -11,16 +11,24 @@ namespace EPTS.Repositories.WebServices.WebAPI.Infrastructure.Entities.Testing
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid TestGroupId { get; set; }
 
-        [StringLength(15)]
+        [ForeignKey("TestPlanId")]
+        public virtual TestPlan TestPlan { get; set; }
         [Required]
-        [Index(IsUnique = true)]
+        public Guid TestPlanId { get; set; }
+
+        [StringLength(50)]
+        [Required]
         public string TestGroupName { get; set; }
 
-        public virtual ICollection<TestGroupLink> TestGroupLink { get; set; }
-        
-        public virtual ICollection<TestPlanLink> TestPlanLink { get; set; }
+        [StringLength(50)]
+        //[Required]
+        public string Description { get; set; }
+
+        [Required]
+        public int Sequence { get; set; }
 
 
+        public virtual ICollection<Test> Test { get; set; }
 
     }
 }

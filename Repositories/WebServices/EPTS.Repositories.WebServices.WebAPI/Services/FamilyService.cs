@@ -65,6 +65,7 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
                 BusinessUnit = Task.Run(async () => await _dataRepositories.BusinessUnitRepository.GetById(c.BusinessUnitId)).Result,
             }).ToList();
             return await Task.FromResult(result);
+
         }
 
         public async Task<bool> UpdateFamily(Family entity)
@@ -83,7 +84,9 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
 
         public async Task<Family> GetFamilyById(Guid id)
         {
-            return await  _dataRepositories.FamilyRepository.GetById(id);
+            var result= await  _dataRepositories.FamilyRepository.GetById(id);
+            result.BusinessUnit = await _dataRepositories.BusinessUnitRepository.GetById(result.BusinessUnitId);
+            return result;
         }
     }
 }

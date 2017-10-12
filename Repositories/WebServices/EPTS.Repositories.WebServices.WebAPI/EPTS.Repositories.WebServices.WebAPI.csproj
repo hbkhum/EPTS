@@ -236,9 +236,8 @@
     <Compile Include="Controllers\StationsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TestGroupController.cs" />
-    <Compile Include="Controllers\TestGroupLinkController.cs" />
     <Compile Include="Controllers\TestPlanController.cs" />
-    <Compile Include="Controllers\TestPlanLinkController.cs" />
+    <Compile Include="Controllers\TestResultController.cs" />
     <Compile Include="Controllers\TestTypeController.cs" />
     <Compile Include="Controllers\TestUnitController.cs" />
     <Compile Include="DependencyInjection\RepositoryModule.cs" />
@@ -257,12 +256,12 @@
     <Compile Include="Infrastructure\Entities\Catalogs\ModelDetail.cs" />
     <Compile Include="Infrastructure\Entities\Catalogs\PartNumber.cs" />
     <Compile Include="Infrastructure\Entities\Catalogs\Station.cs" />
+    <Compile Include="Infrastructure\Entities\Catalogs\StationGroups.cs" />
     <Compile Include="Infrastructure\Entities\Catalogs\StationType.cs" />
     <Compile Include="Infrastructure\Entities\Testing\Test.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestGroup.cs" />
-    <Compile Include="Infrastructure\Entities\Testing\TestGroupLink.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestPlan.cs" />
-    <Compile Include="Infrastructure\Entities\Testing\TestPlanLink.cs" />
+    <Compile Include="Infrastructure\Entities\Testing\TestResult.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestType.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestUnit.cs" />
     <Compile Include="Infrastructure\Interfaces\IBusinessUnitRepository.cs" />
@@ -272,11 +271,11 @@
     <Compile Include="Infrastructure\Interfaces\IModelDetailRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\IModelRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\IPartNumberRepository.cs" />
+    <Compile Include="Infrastructure\Interfaces\IStationGroupsRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\IStationRepository.cs" />
-    <Compile Include="Infrastructure\Interfaces\ITestGroupLinkRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestGroupRepository.cs" />
-    <Compile Include="Infrastructure\Interfaces\ITestPlanLinkRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestPlanRepository.cs" />
+    <Compile Include="Infrastructure\Interfaces\ITestResultRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestTypeRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestUnitRepository.cs" />
@@ -296,6 +295,110 @@
     <Compile Include="Migrations\201709140304361_EPTSContext3.Designer.cs">
       <DependentUpon>201709140304361_EPTSContext3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709231411358_EPTSContext4.cs" />
+    <Compile Include="Migrations\201709231411358_EPTSContext4.Designer.cs">
+      <DependentUpon>201709231411358_EPTSContext4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231424487_EPTSContext5.cs" />
+    <Compile Include="Migrations\201709231424487_EPTSContext5.Designer.cs">
+      <DependentUpon>201709231424487_EPTSContext5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231819207_EPTSContext6.cs" />
+    <Compile Include="Migrations\201709231819207_EPTSContext6.Designer.cs">
+      <DependentUpon>201709231819207_EPTSContext6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231841592_EPTSContext7.cs" />
+    <Compile Include="Migrations\201709231841592_EPTSContext7.Designer.cs">
+      <DependentUpon>201709231841592_EPTSContext7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231859557_EPTSContext8.cs" />
+    <Compile Include="Migrations\201709231859557_EPTSContext8.Designer.cs">
+      <DependentUpon>201709231859557_EPTSContext8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231917189_EPTSContext9.cs" />
+    <Compile Include="Migrations\201709231917189_EPTSContext9.Designer.cs">
+      <DependentUpon>201709231917189_EPTSContext9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709231920432_EPTSContext10.cs" />
+    <Compile Include="Migrations\201709231920432_EPTSContext10.Designer.cs">
+      <DependentUpon>201709231920432_EPTSContext10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709251234515_EPTSContext11.cs" />
+    <Compile Include="Migrations\201709251234515_EPTSContext11.Designer.cs">
+      <DependentUpon>201709251234515_EPTSContext11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709251333403_EPTSContext12.cs" />
+    <Compile Include="Migrations\201709251333403_EPTSContext12.Designer.cs">
+      <DependentUpon>201709251333403_EPTSContext12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709251334520_EPTSContext13.cs" />
+    <Compile Include="Migrations\201709251334520_EPTSContext13.Designer.cs">
+      <DependentUpon>201709251334520_EPTSContext13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709251340043_EPTSContext14.cs" />
+    <Compile Include="Migrations\201709251340043_EPTSContext14.Designer.cs">
+      <DependentUpon>201709251340043_EPTSContext14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709270151548_EPTSContext15.cs" />
+    <Compile Include="Migrations\201709270151548_EPTSContext15.Designer.cs">
+      <DependentUpon>201709270151548_EPTSContext15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709270211219_EPTSContext16.cs" />
+    <Compile Include="Migrations\201709270211219_EPTSContext16.Designer.cs">
+      <DependentUpon>201709270211219_EPTSContext16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709270213022_EPTSContext17.cs" />
+    <Compile Include="Migrations\201709270213022_EPTSContext17.Designer.cs">
+      <DependentUpon>201709270213022_EPTSContext17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709270215038_EPTSContext18.cs" />
+    <Compile Include="Migrations\201709270215038_EPTSContext18.Designer.cs">
+      <DependentUpon>201709270215038_EPTSContext18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709270216414_EPTSContext19.cs" />
+    <Compile Include="Migrations\201709270216414_EPTSContext19.Designer.cs">
+      <DependentUpon>201709270216414_EPTSContext19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709280043336_EPTSContext20.cs" />
+    <Compile Include="Migrations\201709280043336_EPTSContext20.Designer.cs">
+      <DependentUpon>201709280043336_EPTSContext20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710031725520_EPTSContext21.cs" />
+    <Compile Include="Migrations\201710031725520_EPTSContext21.Designer.cs">
+      <DependentUpon>201710031725520_EPTSContext21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710031727160_EPTSContext22.cs" />
+    <Compile Include="Migrations\201710031727160_EPTSContext22.Designer.cs">
+      <DependentUpon>201710031727160_EPTSContext22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710031731496_EPTSContext23.cs" />
+    <Compile Include="Migrations\201710031731496_EPTSContext23.Designer.cs">
+      <DependentUpon>201710031731496_EPTSContext23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710031744322_EPTSContext24.cs" />
+    <Compile Include="Migrations\201710031744322_EPTSContext24.Designer.cs">
+      <DependentUpon>201710031744322_EPTSContext24.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710031936249_EPTSContext25.cs" />
+    <Compile Include="Migrations\201710031936249_EPTSContext25.Designer.cs">
+      <DependentUpon>201710031936249_EPTSContext25.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710032025110_EPTSContext26.cs" />
+    <Compile Include="Migrations\201710032025110_EPTSContext26.Designer.cs">
+      <DependentUpon>201710032025110_EPTSContext26.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710040510565_EPTSContext27.cs" />
+    <Compile Include="Migrations\201710040510565_EPTSContext27.Designer.cs">
+      <DependentUpon>201710040510565_EPTSContext27.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710040511505_EPTSContext28.cs" />
+    <Compile Include="Migrations\201710040511505_EPTSContext28.Designer.cs">
+      <DependentUpon>201710040511505_EPTSContext28.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710052202149_EPTSContext29.cs" />
+    <Compile Include="Migrations\201710052202149_EPTSContext29.Designer.cs">
+      <DependentUpon>201710052202149_EPTSContext29.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BusinessUnitRepository.cs" />
@@ -306,12 +409,12 @@
     <Compile Include="Repositories\ModelDetailRepository.cs" />
     <Compile Include="Repositories\ModelRepository.cs" />
     <Compile Include="Repositories\PartNumberRepository.cs" />
+    <Compile Include="Repositories\StationGroupRepository.cs" />
     <Compile Include="Repositories\StationRepository.cs" />
-    <Compile Include="Repositories\TestGroupLinkRepository.cs" />
     <Compile Include="Repositories\TestGroupRepository.cs" />
-    <Compile Include="Repositories\TestPlanLinkRepository.cs" />
     <Compile Include="Repositories\TestPlanRepository.cs" />
     <Compile Include="Repositories\TestRepository.cs" />
+    <Compile Include="Repositories\TestResultRepository.cs" />
     <Compile Include="Repositories\TestTypeRepository.cs" />
     <Compile Include="Repositories\TestUnitRepository.cs" />
     <Compile Include="Services\BusinessUnitService.cs" />
@@ -326,10 +429,9 @@
     <Compile Include="Services\Interfaces\IModelService.cs" />
     <Compile Include="Services\Interfaces\IPartNumberService.cs" />
     <Compile Include="Services\Interfaces\IStationService.cs" />
-    <Compile Include="Services\Interfaces\ITestGroupLinkService.cs" />
     <Compile Include="Services\Interfaces\ITestGroupService.cs" />
-    <Compile Include="Services\Interfaces\ITestPlanLinkService.cs" />
     <Compile Include="Services\Interfaces\ITestPlanService.cs" />
+    <Compile Include="Services\Interfaces\ITestResultService.cs" />
     <Compile Include="Services\Interfaces\ITestService.cs" />
     <Compile Include="Services\Interfaces\ITestTypeService.cs" />
     <Compile Include="Services\Interfaces\ITestUnitService.cs" />
@@ -338,10 +440,9 @@
     <Compile Include="Services\ModelService.cs" />
     <Compile Include="Services\PartNumberService.cs" />
     <Compile Include="Services\StationService.cs" />
-    <Compile Include="Services\TestGroupLinkService.cs" />
     <Compile Include="Services\TestGroupService.cs" />
-    <Compile Include="Services\TestPlanLinkService.cs" />
     <Compile Include="Services\TestPlanService.cs" />
+    <Compile Include="Services\TestResultService.cs" />
     <Compile Include="Services\TestService.cs" />
     <Compile Include="Services\TestTypeService.cs" />
     <Compile Include="Services\TestUnitService.cs" />
@@ -360,6 +461,84 @@
     <EmbeddedResource Include="Migrations\201709140304361_EPTSContext3.resx">
       <DependentUpon>201709140304361_EPTSContext3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231411358_EPTSContext4.resx">
+      <DependentUpon>201709231411358_EPTSContext4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231424487_EPTSContext5.resx">
+      <DependentUpon>201709231424487_EPTSContext5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231819207_EPTSContext6.resx">
+      <DependentUpon>201709231819207_EPTSContext6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231841592_EPTSContext7.resx">
+      <DependentUpon>201709231841592_EPTSContext7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231859557_EPTSContext8.resx">
+      <DependentUpon>201709231859557_EPTSContext8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231917189_EPTSContext9.resx">
+      <DependentUpon>201709231917189_EPTSContext9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709231920432_EPTSContext10.resx">
+      <DependentUpon>201709231920432_EPTSContext10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709251234515_EPTSContext11.resx">
+      <DependentUpon>201709251234515_EPTSContext11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709251333403_EPTSContext12.resx">
+      <DependentUpon>201709251333403_EPTSContext12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709251334520_EPTSContext13.resx">
+      <DependentUpon>201709251334520_EPTSContext13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709251340043_EPTSContext14.resx">
+      <DependentUpon>201709251340043_EPTSContext14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709270151548_EPTSContext15.resx">
+      <DependentUpon>201709270151548_EPTSContext15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709270211219_EPTSContext16.resx">
+      <DependentUpon>201709270211219_EPTSContext16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709270213022_EPTSContext17.resx">
+      <DependentUpon>201709270213022_EPTSContext17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709270215038_EPTSContext18.resx">
+      <DependentUpon>201709270215038_EPTSContext18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709270216414_EPTSContext19.resx">
+      <DependentUpon>201709270216414_EPTSContext19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709280043336_EPTSContext20.resx">
+      <DependentUpon>201709280043336_EPTSContext20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031725520_EPTSContext21.resx">
+      <DependentUpon>201710031725520_EPTSContext21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031727160_EPTSContext22.resx">
+      <DependentUpon>201710031727160_EPTSContext22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031731496_EPTSContext23.resx">
+      <DependentUpon>201710031731496_EPTSContext23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031744322_EPTSContext24.resx">
+      <DependentUpon>201710031744322_EPTSContext24.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031936249_EPTSContext25.resx">
+      <DependentUpon>201710031936249_EPTSContext25.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710032025110_EPTSContext26.resx">
+      <DependentUpon>201710032025110_EPTSContext26.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710040510565_EPTSContext27.resx">
+      <DependentUpon>201710040510565_EPTSContext27.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710040511505_EPTSContext28.resx">
+      <DependentUpon>201710040511505_EPTSContext28.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710052202149_EPTSContext29.resx">
+      <DependentUpon>201710052202149_EPTSContext29.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -376,7 +555,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>24330</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:24331/</IISUrl>
+          <IISUrl>http://localhost:24332/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
