@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="385bcd28-9c7d-49f5-9b0c-24f6f019191a"
+    Name="1528b284-704b-4901-ac83-5440ef936f32"
     Publisher="CN=HBK"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="385bcd28-9c7d-49f5-9b0c-24f6f019191a" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="1528b284-704b-4901-ac83-5440ef936f32" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>EPTS.UI.Mobile.UWP</DisplayName>

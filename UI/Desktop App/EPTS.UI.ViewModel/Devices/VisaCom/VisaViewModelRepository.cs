@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Devices.VisaCom.Com.Scanner;
 using EPTS.Repositories.XML.Devices.Repositories;
-using EPTS.UI.ViewModel.Models.Devices.SEAMAX;
-using EPTS.UI.ViewModel.Models.Devices.VisaCom.Com.Scanner;
-using EPTS.UI.ViewModel.Models.Devices.VisaCom.DMM;
-using EPTS.UI.ViewModel.Models.Devices.VisaCom.Power;
+using EPTS.Models.Devices.SEAMAX;
+using EPTS.Models.Devices.VisaCom.Com.Scanner;
+using EPTS.Models.Devices.VisaCom.DMM;
+using EPTS.Models.Devices.VisaCom.Power;
 using Scanner = EPTS.Repositories.XML.Devices.Infrastructure.Entities.VisaCom.Com.Scanner.Scanner;
 
 

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\..\..\packages\Microsoft.Net.Compilers.2.2.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\..\packages\Microsoft.Net.Compilers.2.2.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,23 +9,19 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{548F6D68-77BE-4CCD-8484-BE7D100A7868}</ProjectGuid>
+    <ProjectGuid>{56BD1C31-5A5C-43E3-B43F-A4118AF85D62}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EPTS.Repositories.WebServices.WebAPI</RootNamespace>
     <AssemblyName>EPTS.Repositories.WebServices.WebAPI</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -55,32 +51,32 @@
       <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.7\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.3.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.3.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.3.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.Web.2.3.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.WindowsServer.2.3.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.2.3.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -103,8 +99,8 @@
       <HintPath>..\..\..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -133,7 +129,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
@@ -260,6 +256,7 @@
     <Compile Include="Infrastructure\Entities\Catalogs\StationType.cs" />
     <Compile Include="Infrastructure\Entities\Testing\Test.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestGroup.cs" />
+    <Compile Include="Infrastructure\Entities\Testing\TestLink.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestPlan.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestResult.cs" />
     <Compile Include="Infrastructure\Entities\Testing\TestType.cs" />
@@ -274,130 +271,15 @@
     <Compile Include="Infrastructure\Interfaces\IStationGroupsRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\IStationRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestGroupRepository.cs" />
+    <Compile Include="Infrastructure\Interfaces\ITestLinkRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestPlanRepository.cs" />
-    <Compile Include="Infrastructure\Interfaces\ITestResultRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestRepository.cs" />
+    <Compile Include="Infrastructure\Interfaces\ITestResultRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestTypeRepository.cs" />
     <Compile Include="Infrastructure\Interfaces\ITestUnitRepository.cs" />
-    <Compile Include="Migrations\201709121546355_EPTSContext.cs" />
-    <Compile Include="Migrations\201709121546355_EPTSContext.Designer.cs">
-      <DependentUpon>201709121546355_EPTSContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709131213188_EPTSContext1.cs" />
-    <Compile Include="Migrations\201709131213188_EPTSContext1.Designer.cs">
-      <DependentUpon>201709131213188_EPTSContext1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709140258353_EPTSContext2.cs" />
-    <Compile Include="Migrations\201709140258353_EPTSContext2.Designer.cs">
-      <DependentUpon>201709140258353_EPTSContext2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709140304361_EPTSContext3.cs" />
-    <Compile Include="Migrations\201709140304361_EPTSContext3.Designer.cs">
-      <DependentUpon>201709140304361_EPTSContext3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709231411358_EPTSContext4.cs" />
-    <Compile Include="Migrations\201709231411358_EPTSContext4.Designer.cs">
-      <DependentUpon>201709231411358_EPTSContext4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709231424487_EPTSContext5.cs" />
-    <Compile Include="Migrations\201709231424487_EPTSContext5.Designer.cs">
-      <DependentUpon>201709231424487_EPTSContext5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709231819207_EPTSContext6.cs" />
-    <Compile Include="Migrations\201709231819207_EPTSContext6.Designer.cs">
-      <DependentUpon>201709231819207_EPTSContext6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709231841592_EPTSContext7.cs" />
-    <Compile Include="Migrations\201709231841592_EPTSContext7.Designer.cs">
-      <DependentUpon>201709231841592_EPTSContext7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709231859557_EPTSContext8.cs" />
-    <Compile Include="Migrations\201709231859557_EPTSContext8.Designer.cs">
-      <DependentUpon>201709231859557_EPTSContext8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709231917189_EPTSContext9.cs" />
-    <Compile Include="Migrations\201709231917189_EPTSContext9.Designer.cs">
-      <DependentUpon>201709231917189_EPTSContext9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709231920432_EPTSContext10.cs" />
-    <Compile Include="Migrations\201709231920432_EPTSContext10.Designer.cs">
-      <DependentUpon>201709231920432_EPTSContext10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709251234515_EPTSContext11.cs" />
-    <Compile Include="Migrations\201709251234515_EPTSContext11.Designer.cs">
-      <DependentUpon>201709251234515_EPTSContext11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709251333403_EPTSContext12.cs" />
-    <Compile Include="Migrations\201709251333403_EPTSContext12.Designer.cs">
-      <DependentUpon>201709251333403_EPTSContext12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709251334520_EPTSContext13.cs" />
-    <Compile Include="Migrations\201709251334520_EPTSContext13.Designer.cs">
-      <DependentUpon>201709251334520_EPTSContext13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709251340043_EPTSContext14.cs" />
-    <Compile Include="Migrations\201709251340043_EPTSContext14.Designer.cs">
-      <DependentUpon>201709251340043_EPTSContext14.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709270151548_EPTSContext15.cs" />
-    <Compile Include="Migrations\201709270151548_EPTSContext15.Designer.cs">
-      <DependentUpon>201709270151548_EPTSContext15.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709270211219_EPTSContext16.cs" />
-    <Compile Include="Migrations\201709270211219_EPTSContext16.Designer.cs">
-      <DependentUpon>201709270211219_EPTSContext16.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709270213022_EPTSContext17.cs" />
-    <Compile Include="Migrations\201709270213022_EPTSContext17.Designer.cs">
-      <DependentUpon>201709270213022_EPTSContext17.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709270215038_EPTSContext18.cs" />
-    <Compile Include="Migrations\201709270215038_EPTSContext18.Designer.cs">
-      <DependentUpon>201709270215038_EPTSContext18.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709270216414_EPTSContext19.cs" />
-    <Compile Include="Migrations\201709270216414_EPTSContext19.Designer.cs">
-      <DependentUpon>201709270216414_EPTSContext19.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709280043336_EPTSContext20.cs" />
-    <Compile Include="Migrations\201709280043336_EPTSContext20.Designer.cs">
-      <DependentUpon>201709280043336_EPTSContext20.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710031725520_EPTSContext21.cs" />
-    <Compile Include="Migrations\201710031725520_EPTSContext21.Designer.cs">
-      <DependentUpon>201710031725520_EPTSContext21.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710031727160_EPTSContext22.cs" />
-    <Compile Include="Migrations\201710031727160_EPTSContext22.Designer.cs">
-      <DependentUpon>201710031727160_EPTSContext22.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710031731496_EPTSContext23.cs" />
-    <Compile Include="Migrations\201710031731496_EPTSContext23.Designer.cs">
-      <DependentUpon>201710031731496_EPTSContext23.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710031744322_EPTSContext24.cs" />
-    <Compile Include="Migrations\201710031744322_EPTSContext24.Designer.cs">
-      <DependentUpon>201710031744322_EPTSContext24.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710031936249_EPTSContext25.cs" />
-    <Compile Include="Migrations\201710031936249_EPTSContext25.Designer.cs">
-      <DependentUpon>201710031936249_EPTSContext25.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710032025110_EPTSContext26.cs" />
-    <Compile Include="Migrations\201710032025110_EPTSContext26.Designer.cs">
-      <DependentUpon>201710032025110_EPTSContext26.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710040510565_EPTSContext27.cs" />
-    <Compile Include="Migrations\201710040510565_EPTSContext27.Designer.cs">
-      <DependentUpon>201710040510565_EPTSContext27.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710040511505_EPTSContext28.cs" />
-    <Compile Include="Migrations\201710040511505_EPTSContext28.Designer.cs">
-      <DependentUpon>201710040511505_EPTSContext28.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710052202149_EPTSContext29.cs" />
-    <Compile Include="Migrations\201710052202149_EPTSContext29.Designer.cs">
-      <DependentUpon>201710052202149_EPTSContext29.cs</DependentUpon>
+    <Compile Include="Migrations\201710230815461_EPTSContext.cs" />
+    <Compile Include="Migrations\201710230815461_EPTSContext.Designer.cs">
+      <DependentUpon>201710230815461_EPTSContext.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -412,6 +294,7 @@
     <Compile Include="Repositories\StationGroupRepository.cs" />
     <Compile Include="Repositories\StationRepository.cs" />
     <Compile Include="Repositories\TestGroupRepository.cs" />
+    <Compile Include="Repositories\TestLinkRepository.cs" />
     <Compile Include="Repositories\TestPlanRepository.cs" />
     <Compile Include="Repositories\TestRepository.cs" />
     <Compile Include="Repositories\TestResultRepository.cs" />
@@ -430,6 +313,7 @@
     <Compile Include="Services\Interfaces\IPartNumberService.cs" />
     <Compile Include="Services\Interfaces\IStationService.cs" />
     <Compile Include="Services\Interfaces\ITestGroupService.cs" />
+    <Compile Include="Services\Interfaces\ITestLinkService.cs" />
     <Compile Include="Services\Interfaces\ITestPlanService.cs" />
     <Compile Include="Services\Interfaces\ITestResultService.cs" />
     <Compile Include="Services\Interfaces\ITestService.cs" />
@@ -449,95 +333,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709121546355_EPTSContext.resx">
-      <DependentUpon>201709121546355_EPTSContext.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709131213188_EPTSContext1.resx">
-      <DependentUpon>201709131213188_EPTSContext1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709140258353_EPTSContext2.resx">
-      <DependentUpon>201709140258353_EPTSContext2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709140304361_EPTSContext3.resx">
-      <DependentUpon>201709140304361_EPTSContext3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709231411358_EPTSContext4.resx">
-      <DependentUpon>201709231411358_EPTSContext4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709231424487_EPTSContext5.resx">
-      <DependentUpon>201709231424487_EPTSContext5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709231819207_EPTSContext6.resx">
-      <DependentUpon>201709231819207_EPTSContext6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709231841592_EPTSContext7.resx">
-      <DependentUpon>201709231841592_EPTSContext7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709231859557_EPTSContext8.resx">
-      <DependentUpon>201709231859557_EPTSContext8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709231917189_EPTSContext9.resx">
-      <DependentUpon>201709231917189_EPTSContext9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709231920432_EPTSContext10.resx">
-      <DependentUpon>201709231920432_EPTSContext10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709251234515_EPTSContext11.resx">
-      <DependentUpon>201709251234515_EPTSContext11.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709251333403_EPTSContext12.resx">
-      <DependentUpon>201709251333403_EPTSContext12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709251334520_EPTSContext13.resx">
-      <DependentUpon>201709251334520_EPTSContext13.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709251340043_EPTSContext14.resx">
-      <DependentUpon>201709251340043_EPTSContext14.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709270151548_EPTSContext15.resx">
-      <DependentUpon>201709270151548_EPTSContext15.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709270211219_EPTSContext16.resx">
-      <DependentUpon>201709270211219_EPTSContext16.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709270213022_EPTSContext17.resx">
-      <DependentUpon>201709270213022_EPTSContext17.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709270215038_EPTSContext18.resx">
-      <DependentUpon>201709270215038_EPTSContext18.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709270216414_EPTSContext19.resx">
-      <DependentUpon>201709270216414_EPTSContext19.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709280043336_EPTSContext20.resx">
-      <DependentUpon>201709280043336_EPTSContext20.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710031725520_EPTSContext21.resx">
-      <DependentUpon>201710031725520_EPTSContext21.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710031727160_EPTSContext22.resx">
-      <DependentUpon>201710031727160_EPTSContext22.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710031731496_EPTSContext23.resx">
-      <DependentUpon>201710031731496_EPTSContext23.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710031744322_EPTSContext24.resx">
-      <DependentUpon>201710031744322_EPTSContext24.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710031936249_EPTSContext25.resx">
-      <DependentUpon>201710031936249_EPTSContext25.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710032025110_EPTSContext26.resx">
-      <DependentUpon>201710032025110_EPTSContext26.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710040510565_EPTSContext27.resx">
-      <DependentUpon>201710040510565_EPTSContext27.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710040511505_EPTSContext28.resx">
-      <DependentUpon>201710040511505_EPTSContext28.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710052202149_EPTSContext29.resx">
-      <DependentUpon>201710052202149_EPTSContext29.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710230815461_EPTSContext.resx">
+      <DependentUpon>201710230815461_EPTSContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -553,9 +350,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>24330</DevelopmentServerPort>
+          <DevelopmentServerPort>13149</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:24332/</IISUrl>
+          <IISUrl>http://localhost:24330/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -569,8 +366,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\..\..\packages\Microsoft.Net.Compilers.2.2.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.Net.Compilers.2.2.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

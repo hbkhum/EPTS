@@ -111,34 +111,13 @@ namespace EPTS.Repositories.WebServices.WebAPI.Services
                         HiLimit = c.HiLimit,
                         LoLimit = c.LoLimit,
                         Sequence = c.Sequence,
-                        TestGroup = c.TestGroup,
+                        //TestGroup = c.TestGroup,
                         TestType = Task.Run(async () => await _dataRepositories.TestTypeRepository.GetById(c.TestTypeId)).Result,
                         TestUnit = Task.Run(async () => await _dataRepositories.TestUnitRepository.GetById(c.TestUnitId)).Result,
                     }).OrderBy( b => b.Sequence).ToList();
                 }).Result,
 
             }).OrderBy( b => b.Sequence).ToList();
-            //Test = Task.Run(async () =>
-            //{
-            //    //var data=await _dataRepositories.TestRepository.GetById(x.);
-            //    var data = await _dataRepositories.TestGroupRepository.GetById(x.TestGroupId);
-            //    //return data.Test.Select(c => new Test
-            //    //{
-            //    //    TestId = c.TestId,
-            //    //    TestGroupId = c.TestGroupId,
-            //    //    TestTypeId = c.TestTypeId,
-            //    //    TestUnitId = c.TestUnitId,
-            //    //    TestDesciption = c.TestDesciption,
-            //    //    TestName = c.TestName,
-            //    //    HiLimit = c.HiLimit,
-            //    //    LoLimit = c.LoLimit,
-            //    //    Sequence = c.Sequence,
-            //    //    TestGroup = c.TestGroup,
-            //    //    TestType = Task.Run(async () => await _dataRepositories.TestTypeRepository.GetById(c.TestTypeId)).Result,
-            //    //    TestUnit = Task.Run(async () => await _dataRepositories.TestUnitRepository.GetById(c.TestUnitId)).Result,
-            //    //});
-            //    return data.Test;
-            //}).Result,
             return stationgroup.TestPlan;
             //var testgroup = await _dataRepositories.TestGroupRepository.FindBy(c => c.TestPlanId == testplan.TestPlanId);
             //var testgroupid = testgroup.Select(c => c.TestGroupId);

@@ -6,8 +6,8 @@ using Devices.SEAMAX.Core;
 using Devices.TCPIP;
 using Devices.VisaCom.DMM;
 using Devices.VisaCom.Power;
-using EPTS.UI.ViewModel.Models.Devices.SEAMAX;
-using EPTS.UI.ViewModel.Models.Devices.SEAMAX.Core;
+using EPTS.Models.Devices.SEAMAX;
+using EPTS.Models.Devices.SEAMAX.Core;
 using EPTS.UI.ViewModel.Devices;
 
 namespace EPTS.UI.ViewModel.Events

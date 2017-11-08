@@ -1,4 +1,5 @@
-﻿using EPTS.UI.ViewModel.Devices;
+﻿using EPTS.Models;
+using EPTS.UI.ViewModel.Devices;
 using EPTS.UI.ViewModel.Events;
 
 

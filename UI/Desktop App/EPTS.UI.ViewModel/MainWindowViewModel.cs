@@ -1,6 +1,8 @@
-﻿using EPTS.UI.ViewModel.Commands;
+﻿
+
+using EPTS.Core;
+using EPTS.Models;
 using EPTS.UI.ViewModel.Testing;
-using EPTS.UI.ViewModel;
 
 namespace EPTS.UI.ViewModel
 {

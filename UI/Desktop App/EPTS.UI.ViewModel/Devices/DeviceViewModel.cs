@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
 using Devices.VisaCom.Core;
 using EPTS.UI.ViewModel.Devices.SEAMAX;
-using EPTS.UI.ViewModel.Models.Devices.VisaCom.Power;
 using EPTS.UI.ViewModel.Devices.TCPIP;
 using EPTS.UI.ViewModel.Devices.VisaCom;
-using EPTS.UI.ViewModel;
+using EPTS.Models;
 
 namespace EPTS.UI.ViewModel.Devices
 {

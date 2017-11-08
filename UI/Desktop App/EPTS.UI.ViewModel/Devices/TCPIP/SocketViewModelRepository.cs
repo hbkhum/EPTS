@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using EPTS.Repositories.XML.Devices.Repositories;
-using EPTS.UI.ViewModel.Models.Devices.TCPIP;
+using EPTS.Models.Devices.TCPIP;
 
 namespace EPTS.UI.ViewModel.Devices.TCPIP
 {

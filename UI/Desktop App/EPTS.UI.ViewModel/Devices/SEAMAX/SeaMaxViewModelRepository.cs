@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using EPTS.Repositories.XML.Devices.Repositories;
-using EPTS.UI.ViewModel.Models.Devices.SEAMAX;
-using EPTS.UI.ViewModel.Models.Devices.SEAMAX.Core;
+using EPTS.Models.Devices.SEAMAX;
+using EPTS.Models.Devices.SEAMAX.Core;
 
 namespace EPTS.UI.ViewModel.Devices.SEAMAX
 {
@@ -80,8 +80,7 @@ namespace EPTS.UI.ViewModel.Devices.SEAMAX
                 var seaio = (SeaLevel420)sender;
                 var seaioIndex = SeaLevel420.IndexOf(seaio);
                 var digitalinputindex = seaio.DigitalInput.IndexOf(digitalInput);
-                if (DigitalInputEvent != null)
-                    DigitalInputEvent.Invoke(seaio, seaioIndex, digitalinputindex, digitalInput);
+                DigitalInputEvent?.Invoke(seaio, seaioIndex, digitalinputindex, digitalInput);
             }
             else if (type == typeof(SeaLevel410))
             {
@@ -100,16 +99,14 @@ namespace EPTS.UI.ViewModel.Devices.SEAMAX
                 var seaio = (SeaLevel420)sender;
                 var seaioIndex = SeaLevel420.IndexOf(seaio);
                 var digitaloutputindex = seaio.DigitalOutput.IndexOf(digitalOutput);
-                if (DigitalOutputEvent != null)
-                    DigitalOutputEvent.Invoke(seaio, seaioIndex, digitaloutputindex, digitalOutput);
+                DigitalOutputEvent?.Invoke(seaio, seaioIndex, digitaloutputindex, digitalOutput);
             }
             else if (type == typeof(SeaLevel410))
             {
                 var seaio = (SeaLevel410)sender;
                 var seaioIndex = SeaLevel410.IndexOf(seaio);
                 var digitaloutputindex = seaio.DigitalOutput.IndexOf(digitalOutput);
-                if (DigitalOutputEvent != null)
-                    DigitalOutputEvent.Invoke(seaio, seaioIndex, digitaloutputindex, digitalOutput);
+                DigitalOutputEvent?.Invoke(seaio, seaioIndex, digitaloutputindex, digitalOutput);
             }
         }
 
