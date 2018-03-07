@@ -5,6 +5,9 @@ BackEnd
 The Backend was develop using the model N-tiers, where is posible to observe each module is for specif task, with this is comply the SOLID.
 
 This project uses the next layers: Entity Framework code firts, POCO class, respositories layer, services layers, controller layer (Web API 2) JSON. 
+
+![alt text](https://github.com/hbkhum/EPTS/blob/master/Architecture.png)
+
 Demo:
 http://humbertopedraza.dynu.com/epts/webapi/api/Family
 
