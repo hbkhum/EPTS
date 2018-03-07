@@ -15,6 +15,16 @@ http://humbertopedraza.dynu.com/epts/webapi/api/BusinessUnit
 ![alt text](https://github.com/hbkhum/EPTS/blob/master/Web%20API%20Service.png)
 
 
+he web service can use 'where' and 'sorting' for each endpoint
+![alt text](https://github.com/hbkhum/EPTS/blob/master/Web%20Service%20Paging.png)
+
+![alt text](https://github.com/hbkhum/EPTS/blob/master/Web%20API%20Service%20Sort.png)
+
+Source Code:
+
+https://github.com/hbkhum/EPTS/tree/master/Repositories/WebServices/EPTS.Repositories.WebServices.WebAPI
+
+
 
 
 Demo:
